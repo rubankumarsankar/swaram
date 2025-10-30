@@ -1,17 +1,50 @@
 @import "tailwindcss";
 
+/* Color tokens */
 :root {
   --background: #ffffff;
   --foreground: #171717;
+
+  /* Typography tokens */
+  --font-primary: "Montserrat", sans-serif;
+  --font-secondary: "Poppins", sans-serif;
+
+   --color-primary: #153c7a;    /* Deep Navy Blue */
+  --color-primary-light: #1f4e96;
+  --color-primary-dark: #0d2a56;
+
+  --color-secondary: #eab308;  /* Gold / Highlight */
+  --color-secondary-light: #f5c94a;
+  --color-secondary-dark: #c38d00;
+
+  --color-muted: #6b7280;      /* Neutral Gray */
+  --color-border: #e5e7eb;     /* Soft Border Gray */
+
+
+  /* Heading, body, chip fonts */
+  --title-font: var(--font-primary);
+  --subtitle-font: var(--font-primary);
+  --body-font: var(--font-secondary);
+  --chip-font: var(--font-secondary);
+
+  /* Sizes & weights */
+  --title-size: 40px;
+  --title-weight: 800;
+  
+  --subtitle-size: 20px;
+  --subtitle-line: 24px;
+  --subtitle-weight: 600;
+  
+  --body-size: 16px;
+  --body-line: 18px;
+  --body-weight: 400;
+  
+  --chip-size: 12px;
+  --chip-line: 14px;
+  --chip-weight: 400;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
+/* Dark Mode */
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;
@@ -19,8 +52,50 @@
   }
 }
 
+@theme inline {
+  --font-sans: var(--font-primary);
+  --font-heading: var(--font-primary);
+  --font-body: var(--font-secondary);
+
+   /* map CSS vars to Tailwind color utilities */
+  --color-primary: var(--color-primary);
+  --color-secondary: var(--color-secondary);
+}
+
+/* Default body */
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--body-font);
+  font-size: var(--body-size);
+  line-height: var(--body-line);
+}
+
+/* utility classes */
+.title {
+  font-family: var(--title-font);
+  font-size: var(--title-size);
+  font-weight: var(--title-weight);
+  line-height: 1.2;
+}
+
+.subtitle {
+  font-family: var(--subtitle-font);
+  font-size: var(--subtitle-size);
+  font-weight: var(--subtitle-weight);
+  line-height: var(--subtitle-line);
+}
+
+.paragraph {
+  font-family: var(--body-font);
+  font-size: var(--body-size);
+  font-weight: var(--body-weight);
+  line-height: var(--body-line);
+}
+
+.chip {
+  font-family: var(--chip-font);
+  font-size: var(--chip-size);
+  font-weight: var(--chip-weight);
+  line-height: var(--chip-line);
 }
