@@ -34,7 +34,7 @@ export default function PageBanner({
       />
 
       {/* Breadcrumb bottom-left */}
-      <div className="relative z-10 px-5 pb-6 md:px-10 md:pb-8 w-full max-w-7xl mx-auto">
+      <div className="relative z-10 px-5 pb-6 md:px-10 md:pb-8 w-full max-w-8xl mx-auto">
         <Breadcrumb segments={segments} />
       </div>
     </section>

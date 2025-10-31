@@ -14,20 +14,46 @@ const SLIDES = [
       "Procurement & supply chain solutions for hospitals, clinics, and wellness centers.",
       "Blockchain-enabled healthcare supply chain solutions for enhanced transparency and efficiency.",
     ],
-    img: "/assets/healthcare-slide.jpg", // replace with your asset
+    img: "/assets/about-img-1.png", // replace with your asset
     alt: "Healthcare global distribution",
   },
   {
-    title: "Healthcare Trading & Distribution-1",
+    title: "Healthcare Solutions & Services",
     bullets: [
-      "Supply & distribution of medical equipment, pharmaceuticals, and healthcare consumables (including Ayurvedic, naturopathy, and herbal products).",
-      "Import/export of diagnostic devices, surgical tools, and wellness products.",
-      "Procurement & supply chain solutions for hospitals, clinics, and wellness centers.",
-      "Blockchain-enabled healthcare supply chain solutions for enhanced transparency and efficiency.",
+      "Hospital & clinic setup consultation (design, planning, and procurement, including holistic wellness centers)",
+      "Medical Tourism & Patient Facilitation, including advanced treatments, alternative therapies (Ayurveda, naturopathy), and wellness retreats",
+      "Preventive healthcare & wellness programs, integrating modern and alternative medicine",
+      "Telemedicine & remote healthcare solutions, including Ayurvedic and naturopathy-based consultations",
+      "Training & skill development programs for healthcare professionals and wellness practitioners",
     ],
-    img: "/assets/healthcare-slide.jpg", // replace with your asset
-    alt: "Healthcare global distribution",
+    img: "/assets/about-img-2.png", // replace with your asset
+    alt: "Healthcare Solutions & Services",
   },
+  {
+    title: "Healthcare Representation & Business Development",
+    bullets: [
+      "Regional representation & distribution for global healthcare brands (medical, herbal, and wellness)",
+      "Regulatory & licensing support for pharmaceuticals, medical devices, and alternative healthcare products",
+      "Strategic partnerships & institutional collaborations in healthcare infrastructure and holistic wellness",
+      "Healthcare financing & insurance facilitation to support patients and institutions in accessing medical care",
+      "Strategic investments in healthcare startups, fostering innovation in medical technology, AI, and digital health",
+    ],
+    img: "/assets/about-img-3.png", // replace with your asset
+    alt: "Healthcare Representation & Business Development",
+  },
+  {
+    title: "AI & Digital Health Technologies",
+    bullets: [
+      "AI-powered diagnostics & predictive analytics for both modern and alternative medicine",
+      "Remote patient monitoring & health tech solutions, including Ayurveda-integrated platforms",
+      "Blockchain-based healthcare products trading platform for secure, transparent, and efficient transactions",
+      "Smart data management & interoperability using blockchain for secure medical and wellness records",
+      "Clinical research & biotech innovation support leveraging AI and digital platforms",
+    ],
+    img: "/assets/about-img-4.png", // replace with your asset
+    alt: "AI & Digital Health Technologies",
+  },
+
   // Add more slides if needed
 ];
 
@@ -35,7 +61,10 @@ export default function AboutUsCarousel() {
   const [idx, setIdx] = useState(0);
   const total = SLIDES.length;
 
-  const prev = useCallback(() => setIdx((i) => (i - 1 + total) % total), [total]);
+  const prev = useCallback(
+    () => setIdx((i) => (i - 1 + total) % total),
+    [total]
+  );
   const next = useCallback(() => setIdx((i) => (i + 1) % total), [total]);
 
   // keyboard arrows
@@ -51,33 +80,32 @@ export default function AboutUsCarousel() {
   const slide = SLIDES[idx];
 
   return (
-    <section className="bg-white dark:bg-zinc-900 py-14">
+    <section className=" py-14">
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         {/* Section title with underline */}
         <div className="flex justify-start mb-8">
-  <motion.h2
-    initial={{ opacity: 0, y: 20, scale: 0.95 }}
-    whileInView={{ opacity: 1, y: 0, scale: 1 }}
-    viewport={{ once: true }}
-    transition={{ duration: 0.6, ease: "easeOut" }}
-    className="title text-[var(--color-primary)] text-center relative inline-block"
-  >
-    About Us
-
-    {/* Animated underline */}
-    <motion.span
-      initial={{ width: 0, opacity: 0 }}
-      whileInView={{ width: "70%", opacity: 1 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.7, delay: 0.2, ease: "easeOut" }}
-      className="absolute left-1/2 -bottom-2 h-[3px] bg-[var(--color-secondary)] rounded-full -translate-x-1/2"
-    />
-  </motion.h2>
-</div>
+          <motion.h2
+            initial={{ opacity: 0, y: 20, scale: 0.95 }}
+            whileInView={{ opacity: 1, y: 0, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
+            className="title text-[var(--color-primary)] text-center relative inline-block"
+          >
+            About Us
+            {/* Animated underline */}
+            <motion.span
+              initial={{ width: 0, opacity: 0 }}
+              whileInView={{ width: "70%", opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.7, delay: 0.2, ease: "easeOut" }}
+              className="absolute left-1/2 -bottom-2 h-[3px] bg-[var(--color-secondary)] rounded-full -translate-x-1/2"
+            />
+          </motion.h2>
+        </div>
 
         <div className="relative">
           {/* Card */}
-          <article className="relative h-[260px] sm:h-[320px] md:h-[360px] w-full overflow-hidden rounded-xl border border-black/5 shadow-xl">
+          <article className="relative h-[260px] sm:h-[320px] md:h-[360px] w-full overflow-hidden shadow-xl">
             {/* Background image */}
             <Image
               src={slide.img}
