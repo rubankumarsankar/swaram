@@ -8,29 +8,40 @@ const services = [
     title: "Preventive & Supportive Solutions",
     tag: "Prevent",
     href: "/services/prevent",
-    featured: true,
+    // featured: true,
   },
-  { title: "Infrastructure & Construction", tag: "Infrastructure", href: "/services/infrastructure" },
+  {
+    title: "Infrastructure & Construction",
+    tag: "Infrastructure",
+    href: "/services/infrastructure",
+  },
   { title: "Global Trading", tag: "Trading", href: "/services/trading" },
-  { title: "Energy Solutions", tag: "Energy", href: "/services/energy" },
-  { title: "Logistics & Supply Chain Management", tag: "Logistics", href: "/services/logistics" },
+  { title: "Energy Solutions", tag: "Energy", href:"/services/energy" },
+  {
+    title: "Logistics & Supply Chain Management",
+    tag: "Logistics",
+    href: "/services/logistics",
+  },
 ];
 
 export default function ServicesGrid() {
   return (
-    <section className="bg-[#F6F7F9] py-14">
+    <section className=" py-14">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 gap-10 lg:grid-cols-12">
+          
           {/* Left column */}
           <div className="lg:col-span-4">
-            <h2 className="title text-[color:var(--color-primary)]">Services</h2>
-            <p className="paragraph mt-3 text-black/70">
-              Explore our expertise in Infrastructure, Healthcare, Logistics, Energy,
-              Cosmetics, Ayurveda and Trading
+            <h2 className="title text-[color:var(--color-primary)]">
+              Services
+            </h2>
+            <p className="phara mt-3 text-black/70">
+              Explore our expertise in Infrastructure, Healthcare, Logistics,
+              Energy, Cosmetics, Ayurveda and Trading
             </p>
             <Link
               href="/services"
-              className="paragraph mt-6 inline-flex rounded-md bg-[color:var(--color-primary)] px-4 py-2 text-white shadow-sm outline-none transition hover:opacity-90 focus-visible:ring-2 focus-visible:ring-[color:var(--color-primary)]/30"
+              className="btn btn-primary px-6 py-3 mt-5"
             >
               Explore Services
             </Link>
@@ -41,36 +52,45 @@ export default function ServicesGrid() {
             <ul className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
               {services.map((s) => {
                 const isFeatured = Boolean(s.featured);
+
                 return (
                   <li key={s.title} className="h-full">
                     <Link
                       href={s.href}
-                      className={`group block h-full rounded-md border p-4 shadow-sm outline-none transition
-                        ${isFeatured
-                          ? "border-[color:var(--color-primary)] bg-[color:var(--color-primary-light)] text-white shadow-md"
-                          : "border-black/10 bg-white hover:shadow focus-visible:ring-2 focus-visible:ring-black/10"}`}
+                      className={`group block h-full border p-4 shadow-sm outline-none transition duration-300
+                        ${
+                          isFeatured
+                            ? "bg-[color:var(--color-primary)] text-white border-[color:var(--color-primary)] shadow-md cursor-default"
+                            : "bg-white border-black/10 hover:bg-[color:var(--color-primary)] hover:text-white hover:border-[color:var(--color-primary)]"
+                        }
+                      `}
                     >
                       <div className="flex h-full flex-col justify-between">
                         <h3
-                          className={`paragraph font-semibold ${
-                            isFeatured ? "text-white" : "text-black"
-                          }`}
+                          className={`phara font-semibold transition
+                            ${
+                              isFeatured
+                                ? "text-white"
+                                : "text-black group-hover:text-white"
+                            }`}
                         >
                           {s.title}
                         </h3>
 
                         <div className="mt-10 flex items-center justify-between">
                           <span
-                            className={`paragraph text-sm ${
-                              isFeatured ? "text-white/85" : "text-black/60"
-                            }`}
+                            className={`phara text-sm transition
+                              ${
+                                isFeatured
+                                  ? "text-white/85 hover:border hover:border-white"
+                                  : "text-black/60  group-hover:text-white/90 group-hover:border group-hover:border-white group-hover:rounded-sm p-2"
+                              }`}
                           >
                             {s.tag}
                           </span>
 
-                          {/* tiny badge only on featured */}
                           {isFeatured && (
-                            <span className="paragraph rounded-sm bg-white/15 px-2 py-1 text-[11px] tracking-wide">
+                            <span className="phara rounded-sm bg-white/20 px-2 py-1 text-[11px] tracking-wide">
                               {s.tag}
                             </span>
                           )}
@@ -82,6 +102,7 @@ export default function ServicesGrid() {
               })}
             </ul>
           </div>
+
         </div>
       </div>
     </section>

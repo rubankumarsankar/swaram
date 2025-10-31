@@ -39,9 +39,9 @@ export default function HealthCareSlider() {
 
         {/* Left text section */}
         <div className="flex-1 space-y-3">
-          <h2 className="title text-[color:var(--color-primary)]">{title}</h2>
+          <h2 className="title text-primary">{title}</h2>
           <p className="subtitle text-black dark:text-white font-semibold">{subtitle}</p>
-          <p className="paragraph max-w-xs text-black/70 dark:text-white/70">{desc}</p>
+          <p className="phara max-w-xs text-black/70 dark:text-white/70">{desc}</p>
 
           {/* Controls */}
           <div className="flex items-center gap-4 pt-4">
@@ -49,20 +49,20 @@ export default function HealthCareSlider() {
               onClick={handlePrev}
               className="p-2 border border-black/10 rounded-full hover:bg-black/5 dark:border-white/20 dark:hover:bg-white/10 transition"
             >
-              <LuArrowLeft className="h-5 w-5 text-black dark:text-white" />
+              <LuArrowLeft className="h-8 w-8 text-primary dark:text-white" />
             </button>
             <button
               onClick={handleNext}
               className="p-2 border border-black/10 rounded-full hover:bg-black/5 dark:border-white/20 dark:hover:bg-white/10 transition"
             >
-              <LuArrowRight className="h-5 w-5 text-black dark:text-white" />
+              <LuArrowRight className="h-8 w-8 text-primary dark:text-white" />
             </button>
           </div>
         </div>
 
         {/* Right Image */}
         <div className="flex-1 flex justify-center">
-          <div className="relative w-[90%] lg:w-[100%] h-[360px] sm:h-[420px]">
+          <div className="relative w-[90%] lg:w-full h-[360px] sm:h-[420px]">
             <Image
               src={image}
               alt={title}

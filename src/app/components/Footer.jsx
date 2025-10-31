@@ -10,22 +10,17 @@ export default function Footer() {
 
   return (
     <footer className="bg-white border-t border-gray-200 text-[#0A0A0A]">
-      <div className="max-w-7xl mx-auto px-4 py-12 lg:py-16">
+      <div className="max-w-7xl mx-auto px-4 py-6">
         
         {/* Top grid */}
         <div className="grid grid-cols-1 md:grid-cols-4 gap-10">
 
-          {/* Logo + Text */}
+          {/* Logo */}
           <div>
             <Link href="/" className="inline-flex items-center">
-              <Image
-                src="/swaram.png"
-                alt="SwaRam Ventures"
-                width={140}
-                height={40}
-              />
+              <Image src="/swaram.png" alt="SwaRam Ventures" width={140} height={40} />
             </Link>
-            <p className="mt-4 text-[14px] leading-[20px] text-gray-600 max-w-[240px]">
+            <p className="mt-4 text-[14px] leading-5 text-gray-600 max-w-60">
               Massa blandit semper varius faucibus. Suspendisse viverra venenatis placerat nam ut. Pellentesque sit id tempor turpis.
             </p>
           </div>
@@ -34,11 +29,11 @@ export default function Footer() {
           <div>
             <h4 className="font-semibold text-[16px] mb-3">LINKS</h4>
             <ul className="space-y-2 text-[14px]">
-              <li><Link href="#">How it works</Link></li>
-              <li><Link href="#">Trading</Link></li>
-              <li><Link href="#">Features</Link></li>
-              <li><Link href="#">Testimonial</Link></li>
-              <li><Link href="#">Blogs</Link></li>
+              {["How it works","Trading","Features","Testimonial","Blogs"].map((i)=>(
+                <li key={i}>
+                  <Link href="#" className="transition hover:text-[var(--color-secondary)]">{i}</Link>
+                </li>
+              ))}
             </ul>
           </div>
 
@@ -46,16 +41,17 @@ export default function Footer() {
           <div>
             <h4 className="font-semibold text-[16px] mb-3">LEGAL</h4>
             <ul className="space-y-2 text-[14px]">
-              <li><Link href="#">Terms of use</Link></li>
-              <li><Link href="#">Terms of conditions</Link></li>
-              <li><Link href="#">Privacy policy</Link></li>
-              <li><Link href="#">Cookie policy</Link></li>
+              {["Terms of use","Terms & conditions","Privacy policy","Cookie policy"].map((i)=>(
+                <li key={i}>
+                  <Link href="#" className="transition hover:text-[var(--color-secondary)]">{i}</Link>
+                </li>
+              ))}
             </ul>
           </div>
 
           {/* Newsletter */}
           <div>
-            <h4 className="font-semibold text-[16px] mb-3">News letter</h4>
+            <h4 className="font-semibold text-[16px] mb-3">Newsletter</h4>
             <p className="text-[14px] mb-3 text-gray-600">Over 25000 people have subscribed</p>
 
             <div className="relative w-full mb-3">
@@ -69,32 +65,27 @@ export default function Footer() {
               <FaRegEnvelope className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 text-[14px]" />
             </div>
 
-            <button className="bg-[#183E7A] text-white text-[14px] font-medium px-5 py-2 rounded-md w-fit">
-              Subscribe
-            </button>
+            <button className="btn btn-primary px-6 py-3">Subscribe</button>
           </div>
         </div>
 
-        {/* Divider */}
         <hr className="my-8 border-gray-200" />
 
         {/* Bottom */}
         <div className="flex flex-col md:flex-row md:justify-between md:items-center gap-4 text-[13px] text-gray-600">
-
           <div className="flex gap-4">
-            <Link href="#">Privacy & Terms</Link>
-            <Link href="#">Contact Us</Link>
+            <Link href="#" className="hover:text-[var(--color-secondary)]">Privacy & Terms</Link>
+            <Link href="#" className="hover:text-[var(--color-secondary)]">Contact Us</Link>
           </div>
 
           <p>Copyright © {new Date().getFullYear()} Swaram</p>
 
           <div className="flex gap-4 text-[16px]">
-            <Link href="#" className="hover:text-blue-600"><FaFacebookF /></Link>
-            <Link href="#" className="hover:text-pink-600"><FaInstagram /></Link>
-            <Link href="#" className="hover:text-blue-800"><FaLinkedinIn /></Link>
+            <Link href="#" className="hover:text-[var(--color-secondary)]"><FaFacebookF /></Link>
+            <Link href="#" className="hover:text-[var(--color-secondary)]"><FaInstagram /></Link>
+            <Link href="#" className="hover:text-[var(--color-secondary)]"><FaLinkedinIn /></Link>
           </div>
         </div>
-
       </div>
     </footer>
   );

@@ -13,9 +13,9 @@
   --color-primary-light: #1f4e96;
   --color-primary-dark: #0d2a56;
 
-  --color-secondary: #eab308;  /* Gold / Highlight */
-  --color-secondary-light: #f5c94a;
-  --color-secondary-dark: #c38d00;
+  --color-secondary: #F15A29;  /* Gold / Highlight */
+  --color-secondary-light: #F15A29;
+  --color-secondary-dark: #F15A29;
 
   --color-muted: #6b7280;      /* Neutral Gray */
   --color-border: #e5e7eb;     /* Soft Border Gray */
@@ -71,31 +71,77 @@ body {
   line-height: var(--body-line);
 }
 
-/* utility classes */
-.title {
-  font-family: var(--title-font);
-  font-size: var(--title-size);
-  font-weight: var(--title-weight);
-  line-height: 1.2;
-}
+/* Reusable Tailwind component utilities */
+@layer components {
+  .title {
+    font-family: var(--title-font);
+    font-size: var(--title-size);
+    font-weight: var(--title-weight);
+    line-height: 1.2;
+    color: var(--color-primary);
+  }
 
-.subtitle {
-  font-family: var(--subtitle-font);
-  font-size: var(--subtitle-size);
-  font-weight: var(--subtitle-weight);
-  line-height: var(--subtitle-line);
-}
+  .subtitle {
+    font-family: var(--subtitle-font);
+    font-size: var(--subtitle-size);
+    font-weight: var(--subtitle-weight);
+    line-height: var(--subtitle-line);
+    color: var(--color-muted);
+  }
 
-.paragraph {
+  .phara {
+    font-family: var(--body-font);
+    font-size: var(--body-size);
+    font-weight: var(--body-weight);
+    line-height: var(--body-line);
+    color: var(--foreground);
+  }
+
+  .chip-text {
+    font-family: var(--chip-font);
+    font-size: var(--chip-size);
+    font-weight: var(--chip-weight);
+    line-height: var(--chip-line);
+  }
+  /* Buttons */
+.btn {
+  @apply inline-flex items-center justify-center font-medium transition-all duration-200 focus-visible:ring-2 focus-visible:ring-offset-2;
   font-family: var(--body-font);
-  font-size: var(--body-size);
-  font-weight: var(--body-weight);
-  line-height: var(--body-line);
 }
 
-.chip {
-  font-family: var(--chip-font);
-  font-size: var(--chip-size);
-  font-weight: var(--chip-weight);
-  line-height: var(--chip-line);
+.btn-primary {
+  @apply text-white shadow-sm;
+  background-color: var(--color-primary);
+  border: 1px solid var(--color-primary);
 }
+
+.btn-primary:hover {
+  background-color: var(--color-primary-dark);
+  border-color: var(--color-primary-dark);
+}
+
+.btn-outline {
+  @apply bg-transparent;
+  color: var(--color-primary);
+  border: 1px solid var(--color-primary);
+}
+
+.btn-outline:hover {
+  background-color: var(--color-primary-light);
+  color: white;
+  border-color: var(--color-primary-light);
+}
+
+.btn-soft {
+  background-color: var(--color-primary-light);
+  border: 1px solid var(--color-primary-light);
+  color: white;
+}
+
+.btn-soft:hover {
+  background-color: var(--color-primary-dark);
+  border-color: var(--color-primary-dark);
+}
+
+}
+

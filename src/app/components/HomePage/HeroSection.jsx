@@ -11,14 +11,13 @@ export default function Hero() {
         <div className="text-center">
           <h1
             className="title mx-auto max-w-3xl tracking-tight text-balance"
-            style={{ fontSize: "40px", lineHeight: 1.25, fontWeight: 800 }}
           >
             Shaping the Future of Global
             <br className="hidden sm:block" />
             Trade & Services
           </h1>
 
-          <p className="paragraph mx-auto mt-3 max-w-2xl text-black/60 dark:text-white/70">
+          <p className="phara mx-auto mt-3 max-w-2xl text-black/60 dark:text-white/70">
             Explore our solutions in Infrastructure, Logistics, Energy, and Trading.
           </p>
 
@@ -26,17 +25,19 @@ export default function Hero() {
           <div className="mt-6 flex flex-col items-center justify-center gap-3 sm:flex-row">
             <Link
               href="/discover"
-              className="paragraph inline-flex items-center justify-center rounded-lg bg-[#153C7A] px-5 py-2.5 text-white shadow-[0_6px_16px_rgba(21,60,122,.25)] ring-1 ring-black/5 transition hover:opacity-90"
+              className="btn btn-primary px-6 py-3"
             >
               Discover Me
             </Link>
 
             <Link
               href="/contact"
-              className="paragraph inline-flex items-center justify-center rounded-lg border border-[#153C7A]/30 bg-white px-5 py-2.5 text-[#153C7A] shadow-sm transition hover:bg-[#153C7A]/5 dark:bg-zinc-900 dark:hover:bg-zinc-800"
+              className="btn btn-outline px-6 py-3 ml-4"
             >
               Contact Us
             </Link>
+
+            
           </div>
         </div>
 
@@ -44,7 +45,7 @@ export default function Hero() {
         <div className="mt-10 sm:mt-12">
           <div className="mx-auto w-full max-w-4xl overflow-hidden rounded-2xl border border-black/5 bg-white shadow-lg shadow-black/5 ring-1 ring-black/5 dark:bg-zinc-900 dark:border-white/10 dark:ring-white/10">
             {/* Maintain aspect ratio for responsive look */}
-            <div className="relative aspect-[16/10] sm:aspect-[16/9]">
+            <div className="relative aspect-16/10 sm:aspect-video">
               <Image
                 src="/banner/home-hero.png" // <- replace with your image path
                 alt="Global trade and services illustration"
