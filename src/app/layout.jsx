@@ -14,8 +14,12 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-  title: "SwaRam",
+  title: "SwaRam | Home ",
   description: "SwaRam",
+   icons: {
+    icon: "/icon.png",
+    
+  },
 };
 
 export default function RootLayout({ children }) {

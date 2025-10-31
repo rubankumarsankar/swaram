@@ -5,7 +5,14 @@ import FoundersSection from "../components/AboutPage/FoundersSection";
 import MissionVision from "../components/AboutPage/MissionVision";
 import PageBanner from "../components/PageBanner";
 
-
+export const metadata = {
+  title: " About Us | SwaRam ",
+  description: "SwaRam",
+   icons: {
+    icon: "/icon.png",
+    
+  },
+};
 
 export default function About() {
   return <>

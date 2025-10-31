@@ -2,7 +2,14 @@ import PageBanner from "../components/PageBanner";
 import PartnershipSolutions from "../components/Partnership/PartnershipCard";
 import PartnershipSection from "../components/Partnership/PartnershipPage";
 import WorkTogetherForm from "../components/Partnership/WorkTogetherForm";
-
+export const metadata = {
+  title: "Partnership | SwaRam ",
+  description: "SwaRam",
+   icons: {
+    icon: "/icon.png",
+    
+  },
+};
 export default function Partnership() {
   return <>
   <PageBanner

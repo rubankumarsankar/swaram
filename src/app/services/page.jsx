@@ -3,8 +3,14 @@ import ServiceSection from "../components/Service/ServiceSection";
 import ServicesSolutions from "../components/Service/ServicesSolutions";
 import SolutionsOrbit from "../components/Service/SolutionsOrbit";
 
-
-
+export const metadata = {
+  title: " Services & Solutions | SwaRam  ",
+  description: "SwaRam",
+   icons: {
+    icon: "/icon.png",
+    
+  },
+};
 export default function Services() {
   return <>
   <PageBanner
