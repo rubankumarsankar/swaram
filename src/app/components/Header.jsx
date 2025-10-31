@@ -10,7 +10,7 @@ const nav = [
   { label: "About", href: "/about" },
   { label: "Services & Solutions", href: "/services" },
   { label: "Partnership", href: "/partnership" },
-  { label: "Contact Us", href: "/contact" },
+  { label: "Contact Us", href: "/contact-us" },
 ];
 
 export default function Header() {
