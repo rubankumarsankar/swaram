@@ -6,8 +6,9 @@ import WorkTogetherForm from "../components/Partnership/WorkTogetherForm";
 export default function Partnership() {
   return <>
   <PageBanner
-        bg="/assets/services-banner.jpg"
-      />
+            bgDesktop="/banner/partner-banner.jpg"
+            bgMobile="/banner/partner-banner-mob.jpg"
+          />
       <PartnershipSection />
       <PartnershipSolutions 
    items={[

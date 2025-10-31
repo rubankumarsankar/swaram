@@ -8,7 +8,8 @@ import SolutionsOrbit from "../components/Service/SolutionsOrbit";
 export default function Services() {
   return <>
   <PageBanner
-        bg="/assets/services-banner.jpg"
+        bgDesktop="/banner/service-banner.jpg"
+        bgMobile="/banner/service-banner-mob.jpg"
       />
   <ServiceSection />
   <SolutionsOrbit />

@@ -10,9 +10,9 @@ import PageBanner from "../components/PageBanner";
 export default function About() {
   return <>
   <PageBanner
-        
-        bg="/assets/services-banner.jpg"
-      />
+            bgDesktop="/banner/about-banner.jpg"
+            bgMobile="/banner/about-banner-mob.jpg"
+          />
   <AboutUsCentered />
   <AboutUsCarousel />
   <CoreValues />

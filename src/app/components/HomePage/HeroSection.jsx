@@ -43,20 +43,34 @@ export default function Hero() {
 
         {/* Image Card */}
         <div className="mt-10 sm:mt-12">
-          <div className="mx-auto w-full max-w-4xl overflow-hidden rounded-2xl border border-black/5 bg-white shadow-lg shadow-black/5 ring-1 ring-black/5 dark:bg-zinc-900 dark:border-white/10 dark:ring-white/10">
-            {/* Maintain aspect ratio for responsive look */}
-            <div className="relative aspect-16/10 sm:aspect-video">
-              <Image
-                src="/banner/home-hero.png" // <- replace with your image path
-                alt="Global trade and services illustration"
-                fill
-                priority
-                className="object-cover"
-                sizes="(max-width: 768px) 100vw, 800px"
-              />
-            </div>
-          </div>
-        </div>
+  <div className="mx-auto w-full max-w-4xl overflow-hidden rounded-2xl shadow-lg shadow-black/5 ring-1 ring-black/5 dark:bg-zinc-900 dark:border-white/10 dark:ring-white/10">
+
+    <div className="relative aspect-[16/10] sm:aspect-video">
+      
+      {/* Desktop Image */}
+      <Image
+        src="/banner/home-banner.jpg"
+        alt="Global trade and services illustration"
+        fill
+        priority
+        className="hidden sm:block object-cover"
+        sizes="(max-width:1024px) 100vw, 800px"
+      />
+
+      {/* Mobile Image */}
+      <Image
+        src="/banner/home-banner-mob.jpg"
+        alt="Global trade and services mobile illustration"
+        fill
+        priority
+        className="sm:hidden object-cover"
+        sizes="100vw"
+      />
+
+    </div>
+  </div>
+</div>
+
       </div>
     </section>
   );
