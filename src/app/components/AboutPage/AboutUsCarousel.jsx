@@ -81,7 +81,7 @@ export default function AboutUsCarousel() {
 
   return (
     <section className=" py-14">
-      <div className="mx-auto max-w-6xl px-4 sm:px-6">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6">
         {/* Section title with underline */}
         <div className="flex justify-start mb-8">
           <motion.h2
@@ -105,7 +105,7 @@ export default function AboutUsCarousel() {
 
         <div className="relative">
           {/* Card */}
-          <article className="relative h-[260px] sm:h-[320px] md:h-[360px] w-full overflow-hidden shadow-xl">
+          <article className="relative h-[270px] sm:h-[350px] md:h-[360px] w-full overflow-hidden shadow-xl">
             {/* Background image */}
             <Image
               src={slide.img}
@@ -116,15 +116,15 @@ export default function AboutUsCarousel() {
             />
 
             {/* Overlay gradient */}
-            <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/35 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/35 to-transparent" />
 
             {/* Content */}
             <div className="absolute inset-0 flex items-end">
               <div className="p-5 sm:p-7 md:p-8 max-w-3xl text-white">
-                <h3 className="text-xl sm:text-2xl md:text-3xl font-extrabold leading-tight">
+                <h3 className="title text-xl sm:text-2xl md:text-3xl text-white leading-tight">
                   {slide.title}
                 </h3>
-                <ul className="mt-3 list-disc space-y-1 pl-5 text-[13px] sm:text-sm md:text-[15px] text-white/95">
+                <ul className="mt-3 phara list-disc space-y-1 pl-5 text-[13px] sm:text-sm md:text-[15px] text-white/95">
                   {slide.bullets.map((b, i) => (
                     <li key={i} className="leading-snug">
                       {b}
@@ -139,16 +139,16 @@ export default function AboutUsCarousel() {
           <button
             aria-label="Previous"
             onClick={prev}
-            className="absolute -left-6 top-1/2 -translate-y-1/2 hidden sm:grid h-9 w-9 place-items-center rounded-full border border-black/10 bg-white/90 text-black shadow hover:bg-white dark:bg-zinc-900/90 dark:text-white dark:border-white/15 sm:flex"
+            className="absolute -left-6 top-1/2 -translate-y-1/2 hidden sm:grid h-12 w-12 place-items-center rounded-full border border-black/10 bg-white/90 text-primary shadow-lg hover:bg-white dark:bg-zinc-900/90 dark:text-white dark:border-white/15 sm:flex"
           >
-            <LuChevronLeft className="h-5 w-5" />
+            <LuChevronLeft className="h-8 w-8" />
           </button>
           <button
             aria-label="Next"
             onClick={next}
-            className="absolute -right-6 top-1/2 -translate-y-1/2 hidden sm:grid h-9 w-9 place-items-center rounded-full border border-black/10 bg-white/90 text-black shadow hover:bg-white dark:bg-zinc-900/90 dark:text-white dark:border-white/15 sm:flex"
+            className="absolute -right-6 top-1/2 -translate-y-1/2 hidden sm:grid h-12 w-12 place-items-center rounded-full border border-black/10 bg-white/90 text-primary shadow-lg hover:bg-white dark:bg-zinc-900/90 dark:text-white dark:border-white/15 sm:flex"
           >
-            <LuChevronRight className="h-5 w-5" />
+            <LuChevronRight className="h-8 w-8" />
           </button>
 
           {/* Mobile arrows (inside edges) */}

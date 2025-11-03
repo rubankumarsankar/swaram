@@ -42,9 +42,9 @@ export default function Header() {
         {item.label}
 
         {/* Hover borders only */}
-        <span
+        {/* <span
           className="absolute top-0 left-0 w-0 h-[2px] bg-[var(--color-secondary)] transition-all duration-200 group-hover:w-full"
-        ></span>
+        ></span> */}
         <span
           className="absolute bottom-0 left-0 w-0 h-[2px] bg-[var(--color-secondary)] transition-all duration-200 group-hover:w-full"
         ></span>

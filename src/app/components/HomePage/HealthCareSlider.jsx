@@ -7,22 +7,35 @@ import { LuArrowLeft, LuArrowRight } from "react-icons/lu";
 const slides = [
   {
     title: "Health Care",
-    subtitle: "Premium & performance-led",
-    desc: "High-efficacy formulas with skin-safe actives, clean INCI lists, and proven results.",
-    image: "/assets/healthcare.png",
+    subtitle: "Delivering health, preserving life! ",
+    desc: "Providing premium, performance-led healthcare solutions that bridge the gap between innovation and accessibility, ensuring world-class medical supplies and pharmaceutical products reach every corner of the globe. ",
+    image: "/assets/home-img-1.png",
   },
   {
-    title: "Preventive Solutions",
-    subtitle: "Science-backed protection",
-    desc: "Advanced nutraceutical and preventive health products for immune resilience.",
-    image: "/assets/healthcare.png",
+    title: "Global Trading ",
+    subtitle: "Where opportunity meets expertise!  ",
+    desc: "Facilitating seamless international commerce through strategic partnerships and market intelligence, we transform complex cross-border transactions into streamlined pathways for growth and profitability. ",
+    image: "/assets/home-img-2.png",
   },
   {
-    title: "Cosmetic & Wellness",
-    subtitle: "Luxury meets science",
-    desc: "Dermatologist-approved cosmetic formulations for wellness & beauty.",
-    image: "/assets/healthcare.png",
+    title: "Infrastructure & Construction ",
+    subtitle: "Building foundations for generations! ",
+    desc: "From concept to completion, we deliver robust infrastructure projects that shape skylines and strengthen communities, combining cutting-edge engineering with sustainable construction practices. ",
+    image: "/assets/home-img-3.png",
   },
+  {
+    title: "Logistics & Supply Chain Management ",
+    subtitle: "Moving the world forward, together! ",
+    desc: "Orchestrating the intricate dance of global logistics with precision and reliability, we ensure your goods flow efficiently across continents, turning supply chain challenges into competitive advantages. ",
+    image: "/assets/home-img-4.png",
+  },
+  {
+    title: "Energy Solutions  ",
+    subtitle: "Sustainable power for a changing world! ",
+    desc: "Harnessing diverse energy resources to fuel progress responsibly, we provide comprehensive energy solutions that balance economic growth with environmental stewardship for a sustainable tomorrow. ",
+    image: "/assets/home-img-5.png",
+  },
+
 ];
 
 export default function HealthCareSlider() {
@@ -40,8 +53,8 @@ export default function HealthCareSlider() {
         {/* Left text section */}
         <div className="flex-1 space-y-3">
           <h2 className="title text-primary">{title}</h2>
-          <p className="subtitle text-black dark:text-white font-semibold">{subtitle}</p>
-          <p className="phara max-w-xs text-black/70 dark:text-white/70">{desc}</p>
+          <p className="subtitle text-black dark:text-white italic font-semibold">{subtitle}</p>
+          <p className="phara text-base/6 max-w-xs text-black/70 dark:text-white/70">{desc}</p>
 
           {/* Controls */}
           <div className="flex items-center gap-4 pt-4">

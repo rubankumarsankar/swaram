@@ -6,45 +6,79 @@ import SolutionsOrbit from "../components/Service/SolutionsOrbit";
 export const metadata = {
   title: " Services & Solutions | SwaRam  ",
   description: "SwaRam",
-   icons: {
+  icons: {
     icon: "/icon.png",
-    
   },
 };
 export default function Services() {
-  return <>
-  <PageBanner
+  return (
+    <>
+      <PageBanner
         bgDesktop="/banner/service-banner.jpg"
         bgMobile="/banner/service-banner-mob.jpg"
       />
-  <ServiceSection />
-  <SolutionsOrbit />
-  <ServicesSolutions
-   title="Services & Solutions"
-   items={[
-    {
-       category: "Healthcare",
-       title: "Preventive & Supportive Solutions",
-       bullets: [
-         "Medical equipment and healthcare supplies trading",
-         "Preventive healthcare solutions",
-        "Telemedicine and digital healthcare integration",
-         "Health and wellness consultancy"
-     ],
-       image: "/assets/service-img-1.png"
-    },
-     {
-      category: "Trading",
-      title: "Global Trading",
-       bullets: [
-        "Import/Export services",
-         "Sourcing & Distribution",
-        "Trading in raw materials, including commodities, metals, energy resources, and machinery",
-        "Custom solutions for international clients"
-       ],
-      image: "/assets/service-img-2.png"
-    }
-   ]}
- />
-  </>;
+      <ServiceSection />
+      <SolutionsOrbit />
+      <ServicesSolutions
+        title="Services & Solutions"
+        items={[
+          {
+            category: "Healthcare",
+            title: "Preventive & Supportive Solutions",
+            bullets: [
+              "Medical equipment and healthcare supplies trading",
+              "Preventive healthcare solutions",
+              "Telemedicine and digital healthcare integration",
+              "Health and wellness consultancy",
+            ],
+            image: "/assets/service-img-1.png",
+          },
+          {
+            category: "Trading",
+            title: "Global Trading",
+            bullets: [
+              "Import/Export services",
+              "Sourcing & Distribution",
+              "Trading in raw materials, including commodities, metals, energy resources, and machinery",
+              "Custom solutions for international clients",
+            ],
+            image: "/assets/service-img-2.png",
+          },
+          {
+            category: "Infrastructure",
+            title: "Infrastructure & Construction",
+            bullets: [
+              "Large-scale infrastructure projects",
+              "Residential, commercial, and industrial construction",
+              "Project management and consultancy",
+              "Infrastructure development for transport, energy, and urbanization",
+            ],
+            image: "/assets/service-img-3.png",
+          },
+          {
+            category: "Logistics",
+            title: "Logistics & Supply Chain Management",
+            bullets: [
+              "Freight forwarding and shipping solutions",
+              "Warehousing & inventory management",
+              "Cross-border logistics",
+              "Last-mile delivery solutions",
+            ],
+            image: "/assets/service-img-4.png",
+          },
+          {
+            category: "Energy",
+            title: "Energy Solutions",
+            bullets: [
+              "Renewable Energy Projects (Solar, Wind, etc.)",
+              "Energy Efficiency Solutions",
+              "Power Distribution & Infrastructure",
+              "Consulting & Engineering Services",
+            ],
+            image: "/assets/service-img-5.png",
+          },
+        ]}
+      />
+    </>
+  );
 }

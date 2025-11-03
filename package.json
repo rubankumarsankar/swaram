@@ -9,8 +9,10 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "@emailjs/browser": "^4.4.1",
     "@fontsource/montserrat": "^5.2.8",
     "@fontsource/poppins": "^5.2.7",
+    "emailjs-com": "^3.2.0",
     "framer-motion": "^12.23.24",
     "next": "16.0.1",
     "postcss": "^8.5.6",

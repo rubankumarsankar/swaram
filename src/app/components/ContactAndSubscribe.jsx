@@ -1,7 +1,89 @@
 "use client";
 
+import React from "react";
 import { useForm } from "react-hook-form";
 import { LuMail, LuMapPin } from "react-icons/lu";
+import emailjs from "emailjs-com";
+
+/* ========= EmailJS IDs (replace with yours or move to env) ========= */
+const EMAILJS_SERVICE_ID = "service_658qu6f";
+const EMAILJS_PUBLIC_KEY = "3HrWnx7n23xp9zGfl";
+const EMAILJS_CONTACT_TEMPLATE_ID = "template_02l7cm4";
+/* =================================================================== */
+
+/* -------------------- Mini toast system -------------------- */
+function useToast() {
+  const [toasts, setToasts] = React.useState([]);
+  const remove = React.useCallback((id) => {
+    setToasts((t) => t.filter((x) => x.id !== id));
+  }, []);
+  const push = React.useCallback((type, title, description) => {
+    const id = Date.now() + Math.random();
+    setToasts((t) => [...t, { id, type, title, description }]);
+    setTimeout(() => remove(id), 3500);
+  }, [remove]);
+
+  React.useEffect(() => {
+    const onKey = (e) => {
+      if (e.key === "Escape") setToasts([]);
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, []);
+
+  return { toasts, push, remove };
+}
+
+function ToastViewport({ toasts, onClose }) {
+  return (
+    <div aria-live="assertive" className="fixed top-4 right-4 z-[9999] flex flex-col gap-3">
+      {toasts.map((t) => (
+        <div
+          key={t.id}
+          role="alert"
+          className={[
+            "w-[320px] rounded-md border shadow-lg p-3 transition-all",
+            t.type === "success" ? "border-emerald-200 bg-emerald-50" : "",
+            t.type === "error" ? "border-red-200 bg-red-50" : "",
+            t.type === "info" ? "border-sky-200 bg-sky-50" : "",
+          ].join(" ")}
+        >
+          <div className="flex items-start gap-3">
+            <span className="mt-0.5">
+              {t.type === "success" && (
+                <svg width="18" height="18" viewBox="0 0 24 24" className="text-emerald-600">
+                  <path fill="currentColor" d="M12 2a10 10 0 1 0 .001 20.001A10 10 0 0 0 12 2m-1 15l-5-5l1.414-1.414L11 14.172l6.586-6.586L19 9z"/>
+                </svg>
+              )}
+              {t.type === "error" && (
+                <svg width="18" height="18" viewBox="0 0 24 24" className="text-red-600">
+                  <path fill="currentColor" d="M11 7h2v6h-2zm0 8h2v2h-2z"/><path fill="currentColor" d="M1 21h22L12 2z"/>
+                </svg>
+              )}
+              {t.type === "info" && (
+                <svg width="18" height="18" viewBox="0 0 24 24" className="text-sky-600">
+                  <path fill="currentColor" d="M11 17h2v-6h-2zm0-8h2V7h-2z"/><path fill="currentColor" d="M12 2a10 10 0 1 0 10 10A10.011 10.011 0 0 0 12 2z"/>
+                </svg>
+              )}
+            </span>
+            <div className="min-w-0">
+              <p className="text-sm font-semibold text-black/90">{t.title}</p>
+              {t.description ? <p className="text-xs text-black/70 mt-0.5">{t.description}</p> : null}
+            </div>
+            <button
+              aria-label="Close"
+              onClick={() => onClose(t.id)}
+              className="ml-auto inline-flex rounded p-1 text-black/50 hover:text-black/80"
+            >
+              ✕
+            </button>
+          </div>
+        </div>
+      ))}
+    </div>
+  );
+}
+/* ---------------------------------------------------------- */
 
 export default function ContactAndSubscribe() {
   const {
@@ -13,25 +95,41 @@ export default function ContactAndSubscribe() {
     defaultValues: { name: "", email: "", phone: "", message: "" },
   });
 
-  const onSubmit = async (data) => {
-    // TODO: wire to your API (fetch/axios). Demo only:
-    await new Promise((r) => setTimeout(r, 700));
-    alert(
-      `Thanks! We received your message:\n${JSON.stringify(data, null, 2)}`
-    );
-    reset();
+  const { toasts, push, remove } = useToast();
+
+  // Contact form submit
+  const onSubmitContact = async (data) => {
+    try {
+      await emailjs.send(
+        EMAILJS_SERVICE_ID,
+        EMAILJS_CONTACT_TEMPLATE_ID,
+        {
+          name: data.name,
+          email: data.email,
+          phone: data.phone,
+          message: data.message,
+        },
+        EMAILJS_PUBLIC_KEY
+      );
+      push("success", "Message sent", "Thanks. We will get back to you shortly.");
+      reset();
+    } catch (error) {
+      console.error("EmailJS Error (contact):", error);
+      push("error", "Failed to send", "Please try again in a moment.");
+    }
   };
 
   return (
     <section className="bg-white">
+      {/* Toasts */}
+      <ToastViewport toasts={toasts} onClose={remove} />
+
       <div className="mx-auto max-w-7xl px-4 sm:px-6 py-12 lg:py-16">
         {/* Top: Contact info + form */}
         <div className="grid grid-cols-1 gap-10 md:grid-cols-12">
           {/* Left: contact info */}
           <aside className="md:col-span-6">
-            <p className="text-xs uppercase tracking-wide text-black/60 mb-1">
-              Contact Info
-            </p>
+            <p className="text-xs uppercase tracking-wide text-black/60 mb-1">Contact Info</p>
             <h3 className="text-[24px] font-extrabold leading-snug text-[var(--color-primary)]">
               We are always
               <br /> happy to
@@ -64,17 +162,11 @@ export default function ContactAndSubscribe() {
 
           {/* Right: form */}
           <div className="md:col-span-6">
-            <form
-              onSubmit={handleSubmit(onSubmit)}
-              noValidate
-              className="space-y-5"
-            >
+            <form onSubmit={handleSubmit(onSubmitContact)} noValidate className="space-y-5">
               {/* name + email */}
               <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
                 <div>
-                  <label className="block text-sm font-medium text-black/80 mb-1">
-                    Name
-                  </label>
+                  <label className="block text-sm font-medium text-black/80 mb-1">Name</label>
                   <input
                     type="text"
                     placeholder="Enter Your Name"
@@ -84,9 +176,7 @@ export default function ContactAndSubscribe() {
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-black/80 mb-1">
-                    Email Address *
-                  </label>
+                  <label className="block text-sm font-medium text-black/80 mb-1">Email Address *</label>
                   <input
                     type="email"
                     placeholder="Enter Your Email Address"
@@ -99,19 +189,13 @@ export default function ContactAndSubscribe() {
                     })}
                     className="w-full rounded-sm border border-black/15 bg-white px-3 py-2 text-sm outline-none placeholder:text-black/40 focus:border-[var(--color-primary)]"
                   />
-                  {errors.email && (
-                    <p className="mt-1 text-xs text-red-600">
-                      {errors.email.message}
-                    </p>
-                  )}
+                  {errors.email && <p className="mt-1 text-xs text-red-600">{errors.email.message}</p>}
                 </div>
               </div>
 
               {/* phone */}
               <div>
-                <label className="block text-sm font-medium text-black/80 mb-1">
-                  Phone Number
-                </label>
+                <label className="block text-sm font-medium text-black/80 mb-1">Phone Number</label>
                 <input
                   type="tel"
                   placeholder="Enter Your Phone Number"
@@ -123,18 +207,12 @@ export default function ContactAndSubscribe() {
                   })}
                   className="w-full rounded-sm border border-black/15 bg-white px-3 py-2 text-sm outline-none placeholder:text-black/40 focus:border-[var(--color-primary)]"
                 />
-                {errors.phone && (
-                  <p className="mt-1 text-xs text-red-600">
-                    {errors.phone.message}
-                  </p>
-                )}
+                {errors.phone && <p className="mt-1 text-xs text-red-600">{errors.phone.message}</p>}
               </div>
 
               {/* message */}
               <div>
-                <label className="block text-sm font-medium text-black/80 mb-1">
-                  Message
-                </label>
+                <label className="block text-sm font-medium text-black/80 mb-1">Message</label>
                 <textarea
                   rows={4}
                   placeholder="Tell About Your Project"
@@ -152,9 +230,7 @@ export default function ContactAndSubscribe() {
                   {isSubmitting ? "Sending..." : "Leave us a Message"}
                 </button>
                 {isSubmitSuccessful && (
-                  <span className="ml-3 text-sm text-emerald-600">
-                    Thanks! We’ll get back to you.
-                  </span>
+                  <span className="ml-3 text-sm text-emerald-600">Thanks. We will get back to you.</span>
                 )}
               </div>
             </form>
@@ -163,13 +239,11 @@ export default function ContactAndSubscribe() {
       </div>
 
       {/* Newsletter strip */}
-      <div className=" py-10">
+      <div className="py-10">
         <div className="mx-auto max-w-7xl px-4 sm:px-6">
           <div className="grid grid-cols-1 gap-8 md:grid-cols-12 items-start">
             <div className="md:col-span-7">
-              <p className="text-xs uppercase tracking-wide text-black/60">
-                Subscribe
-              </p>
+              <p className="text-xs uppercase tracking-wide text-black/60">Subscribe</p>
               <h3 className="mt-1 text-[22px] md:text-[24px] font-extrabold text-[var(--color-primary)]">
                 Subscribe to our Newsletter
               </h3>
@@ -179,7 +253,7 @@ export default function ContactAndSubscribe() {
               </p>
             </div>
 
-            <NewsletterForm />
+            <NewsletterForm pushToast={push} />
           </div>
         </div>
       </div>
@@ -187,27 +261,55 @@ export default function ContactAndSubscribe() {
   );
 }
 
-/* ---------- Newsletter mini-form using RHF as well ---------- */
-function NewsletterForm() {
+/* ---------- Newsletter mini-form using RHF + Web3Forms + Toast ---------- */
+function NewsletterForm({ pushToast }) {
   const {
     register,
     handleSubmit,
     reset,
     formState: { errors, isSubmitting, isSubmitSuccessful },
-  } = useForm({ defaultValues: { nemail: "" } });
+  } = useForm({ defaultValues: { nemail: "", botcheck: false } });
 
-  const onSubmit = async (data) => {
-    await new Promise((r) => setTimeout(r, 500));
-    alert(`Subscribed: ${data.nemail}`);
-    reset();
+  const WEB3FORMS_ACCESS_KEY = "9527ea59-002e-43a5-8166-763352c37002";
+
+  const onSubmitNewsletter = async (data) => {
+    try {
+      if (data.botcheck) return;
+
+      const formData = new FormData();
+      formData.append("access_key", WEB3FORMS_ACCESS_KEY);
+      formData.append("email", data.nemail);
+      formData.append("subject", "New Newsletter Subscriber");
+      formData.append("from_name", "Swaram Website");
+      formData.append("reply_to", data.nemail);
+      // formData.append("submission_source", "Newsletter mini form");
+
+      const res = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        body: formData,
+        headers: { Accept: "application/json" },
+      });
+
+      const json = await res.json();
+
+      if (json.success) {
+        pushToast("success", "Subscribed successfully", "Welcome aboard.");
+        reset();
+      } else {
+        console.error("Web3Forms Error:", json);
+        pushToast("error", "Subscription failed", "Please try again.");
+      }
+    } catch (err) {
+      console.error("Web3Forms Exception:", err);
+      pushToast("error", "Subscription failed", "Network or service issue.");
+    }
   };
 
   return (
-    <form
-      onSubmit={handleSubmit(onSubmit)}
-      noValidate
-      className="md:col-span-5 flex flex-col gap-2"
-    >
+    <form onSubmit={handleSubmit(onSubmitNewsletter)} noValidate className="md:col-span-5 flex flex-col gap-2">
+      {/* Honeypot (hidden) */}
+      <input type="checkbox" tabIndex={-1} className="hidden" {...register("botcheck")} />
+
       <label className="text-sm font-medium text-black/80">Email</label>
       <div className="flex flex-col w-full gap-2 max-w-md">
         <input
@@ -232,12 +334,8 @@ function NewsletterForm() {
         </button>
       </div>
 
-      {errors.nemail && (
-        <p className="text-xs text-red-600">{errors.nemail.message}</p>
-      )}
-      {isSubmitSuccessful && (
-        <p className="text-xs text-emerald-600">Subscribed successfully.</p>
-      )}
+      {errors.nemail && <p className="text-xs text-red-600">{errors.nemail.message}</p>}
+      {isSubmitSuccessful && <p className="text-xs text-emerald-600">Subscribed successfully.</p>}
     </form>
   );
 }
