@@ -95,7 +95,7 @@ export default function ServicesSolutions({ title = "Services & Solutions", item
                       {it.title}
                     </h3>
 
-                    <ul className="mt-4 phara text-xl space-y-4 leading-relaxed text-black/75">
+                    <ul className="mt-10 phara text-xl space-y-4 leading-relaxed text-black/75">
                       {it.bullets?.map((b, idx) => (
                         <li
                           key={idx}

@@ -79,7 +79,7 @@ export default function ServicesGrid() {
 
                         <div className="mt-10 flex items-center justify-between">
                           <span
-                            className={`phara text-sm transition
+                            className={`phara text-sm border border-black/20 rounded-sm transition
                               ${
                                 isFeatured
                                   ? "text-white/85 hover:border hover:border-white"

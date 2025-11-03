@@ -48,7 +48,7 @@ export default function HealthCareSlider() {
 
   return (
     <section className="bg-white dark:bg-zinc-900 py-16">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 flex flex-col lg:flex-row items-center gap-10">
+      <div className="mx-auto max-w-7xl px-4 shadow sm:px-6 lg:px-8 flex flex-col lg:flex-row items-center gap-10">
 
         {/* Left text section */}
         <div className="flex-1 space-y-3">

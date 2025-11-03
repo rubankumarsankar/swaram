@@ -251,7 +251,7 @@ export default function WorkTogetherForm() {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="rounded-sm bg-[var(--color-primary)] px-6 py-3 text-sm font-medium text-white shadow-sm transition hover:opacity-90 disabled:opacity-60"
+                className="btn btn-primary px-6 py-3 disabled:opacity-60"
               >
                 {isSubmitting ? "Submitting…" : "Submit"}
               </button>

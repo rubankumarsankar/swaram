@@ -60,7 +60,7 @@ export default function CoreValues() {
           {items.map((v) => (
             <div
               key={v.title}
-              className="rounded-xl border border-black/10 bg-white p-5 shadow-sm dark:border-white/10 dark:bg-zinc-900"
+              className="rounded-xl bg-white p-5 "
             >
               <div className="flex items-start gap-3">
                 <span className="inline-flex h-10 w-10 items-center justify-center">

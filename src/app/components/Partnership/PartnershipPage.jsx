@@ -2,32 +2,31 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { LuGlobe, LuSearch, LuLightbulb, LuCog } from "react-icons/lu";
 
 const features = [
   {
     title: "Global Ambition",
     desc:
       "Swaram is positioned as a globally oriented company with aspirations to lead in its chosen sectors.",
-    icon: <LuGlobe className="h-20 w-20 text-[var(--color-primary)]" />,
+    img: "/icons/icon-4.png",
   },
   {
     title: "Emphasis on Expertise",
     desc:
       "Founders’ decades of experience are a core asset driving the company’s capabilities.",
-    icon: <LuSearch className="h-20 w-20 text-[#E2572B]" />,
+    img: "/icons/icon-5.png",
   },
   {
     title: "Integrated Solutions",
     desc:
       "End-to-end services across disciplines deliver streamlined solutions for clients.",
-    icon: <LuLightbulb className="h-20 w-20 text-[#25C165]" />,
+    img: "/icons/icon-6.png",
   },
   {
     title: "Innovation & Sustainability",
     desc:
       "Committed to technological advancement and environmentally responsible practices.",
-    icon: <LuCog className="h-20 w-20 text-[var(--color-primary)]" />,
+    img: "/icons/icon-7.png",
   },
 ];
 
@@ -115,18 +114,26 @@ export default function PartnershipSection() {
               initial="hidden"
               whileInView="show"
               viewport={{ once: true }}
-              className="rounded-xl border border-black/10 bg-white p-4 shadow-sm dark:bg-zinc-900 dark:border-white/15"
+              className=" p-4 "
             >
               <div className="flex items-start gap-3">
-                
-                
-                  <h3 className="title">
-                    <span className="h-20 w-20">{f.icon}</span> {f.title}
+                <div className="h-20 w-20 flex-shrink-0">
+                  <Image
+                    src={f.img}
+                    alt={f.title}
+                    width={80}
+                    height={80}
+                    className="h-20 w-20 object-contain"
+                  />
+                </div>
+                <div>
+                  <h3 className="subtitle font-semibold text-black dark:text-white">
+                    {f.title}
                   </h3>
-                  <p className="phara mt-1 text-black/70">
+                  <p className="phara mt-1 text-black/70 dark:text-white/70">
                     {f.desc}
                   </p>
-               
+                </div>
               </div>
             </motion.div>
           ))}
@@ -138,7 +145,7 @@ export default function PartnershipSection() {
 
 /* ---------------- helpers ---------------- */
 
-function FeatureCard({ i = 0, className = "", title, desc, icon }) {
+function FeatureCard({ i = 0, className = "", title, desc, img }) {
   return (
     <motion.div
       custom={i}
@@ -146,10 +153,18 @@ function FeatureCard({ i = 0, className = "", title, desc, icon }) {
       initial="hidden"
       whileInView="show"
       viewport={{ once: true }}
-      className={`rounded-xl bg-white/90 p-4 backdrop-blur-sm ${className}`}
+      className={`rounded-xl bg-white/90 p-4 ${className}`}
     >
       <div className="flex items-start gap-3">
-        {icon}
+        <div className="h-10 w-10 flex-shrink-0">
+          <Image
+            src={img}
+            alt={title}
+            width={44}
+            height={44}
+            className="h-10 w-10 object-contain"
+          />
+        </div>
         <div>
           <h3 className="subtitle font-semibold text-black dark:text-white">
             {title}

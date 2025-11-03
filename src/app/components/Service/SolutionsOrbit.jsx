@@ -4,12 +4,12 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 
 const pills = [
-  { label: "Healthcare", pos: "left-[10%] top-[28%]" },
-  { label: "Infrastructure &\nConstruction", pos: "right-[10%] top-[28%]" },
+  { label: "Healthcare", pos: "left-[10%] top-[20%]" },
+  { label: "Infrastructure &\nConstruction", pos: "right-[10%] top-[20%]" },
   { label: "Global\nTrading", pos: "left-[6%] top-1/2 -translate-y-1/2" },
   { label: "Logistics & Supply\nChain Management", pos: "right-[6%] top-1/2 -translate-y-1/2" },
-  { label: "Preventive & Supportive\nSolutions", pos: "left-[10%] bottom-[22%]" },
-  { label: "Energy\nSolutions", pos: "right-[10%] bottom-[22%]" },
+  { label: "Preventive & Supportive\nSolutions", pos: "left-[4%] bottom-[18%]" },
+  { label: "Energy\nSolutions", pos: "right-[20%] bottom-[18%]" },
 ];
 
 const pillVariant = {
@@ -24,7 +24,7 @@ const pillVariant = {
 
 export default function SolutionsOrbit() {
   return (
-    <section className="bg-white dark:bg-zinc-900 py-14 md:py-18">
+    <section className="bg-white dark:bg-zinc-900">
       <div className="mx-auto max-w-5xl px-4 sm:px-6">
 
         {/* Title */}
@@ -51,8 +51,8 @@ export default function SolutionsOrbit() {
             <Image
               src="/assets/centered-icon.png" // e.g. a square mark
               alt="SwaRam mark"
-              width={110}
-              height={110}
+              width={210}
+              height={210}
               className="drop-shadow-sm"
               priority
             />

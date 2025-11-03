@@ -78,7 +78,7 @@ export default function AboutSection() {
           >
             <motion.h2
               variants={fadeUp}
-              className="title text-primary font-semibold"
+              className="title text-primary "
             >
               About Us
             </motion.h2>
