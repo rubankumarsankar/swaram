@@ -8,25 +8,25 @@ const features = [
     title: "Global Ambition",
     desc:
       "Swaram is positioned as a globally oriented company with aspirations to lead in its chosen sectors.",
-    img: "/icons/icon-4.png",
+    img: "/icons/icons-1.png",
   },
   {
     title: "Emphasis on Expertise",
     desc:
-      "Founders’ decades of experience are a core asset driving the company’s capabilities.",
-    img: "/icons/icon-5.png",
+      "Founders’ decades of experience are a core asset driving the company’s capabilities. ",
+    img: "/icons/icons-2.png",
   },
   {
     title: "Integrated Solutions",
     desc:
       "End-to-end services across disciplines deliver streamlined solutions for clients.",
-    img: "/icons/icon-6.png",
+    img: "/icons/icons-3.png",
   },
   {
     title: "Innovation & Sustainability",
     desc:
       "Committed to technological advancement and environmentally responsible practices.",
-    img: "/icons/icon-7.png",
+    img: "/icons/icons-4.png",
   },
 ];
 

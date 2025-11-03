@@ -6,19 +6,19 @@ import { motion } from "framer-motion";
 const featureList = [
   {
     title: "Global Ambition",
-    img: "/icons/icon-4.png",
+    img: "/icons/icons-1.png",
   },
   {
     title: "Emphasis on Expertise",
-    img: "/icons/icon-5.png",
+    img: "/icons/icons-2.png",
   },
   {
     title: "Integrated Solutions",
-    img: "/icons/icon-6.png",
+    img: "/icons/icons-3.png",
   },
   {
     title: "Innovation & Sustainability",
-    img: "/icons/icon-7.png",
+    img: "/icons/icons-4.png",
   },
 ];
 
