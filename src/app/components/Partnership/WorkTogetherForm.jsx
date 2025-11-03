@@ -49,17 +49,17 @@ function ToastViewport({ toasts, onClose }) {
             <span className="mt-0.5">
               {t.type === "success" && (
                 <svg width="18" height="18" viewBox="0 0 24 24" className="text-emerald-600">
-                  <path fill="currentColor" d="M12 2a10 10 0 1 0 .001 20.001A10 10 0 0 0 12 2m-1 15l-5-5l1.414-1.414L11 14.172l6.586-6.586L19 9z"/>
+                  <path fill="currentColor" d="M12 2a10 10 0 1 0 .001 20.001A10 10 0 0 0 12 2m-1 15l-5-5l1.414-1.414L11 14.172l6.586-6.586L19 9z" />
                 </svg>
               )}
               {t.type === "error" && (
                 <svg width="18" height="18" viewBox="0 0 24 24" className="text-red-600">
-                  <path fill="currentColor" d="M11 7h2v6h-2zm0 8h2v2h-2z"/><path fill="currentColor" d="M1 21h22L12 2z"/>
+                  <path fill="currentColor" d="M11 7h2v6h-2zm0 8h2v2h-2z" /><path fill="currentColor" d="M1 21h22L12 2z" />
                 </svg>
               )}
               {t.type === "info" && (
                 <svg width="18" height="18" viewBox="0 0 24 24" className="text-sky-600">
-                  <path fill="currentColor" d="M11 17h2v-6h-2zm0-8h2V7h-2z"/><path fill="currentColor" d="M12 2a10 10 0 1 0 10 10A10.011 10.011 0 0 0 12 2z"/>
+                  <path fill="currentColor" d="M11 17h2v-6h-2zm0-8h2V7h-2z" /><path fill="currentColor" d="M12 2a10 10 0 1 0 10 10A10.011 10.011 0 0 0 12 2z" />
                 </svg>
               )}
             </span>
