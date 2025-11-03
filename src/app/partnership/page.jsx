@@ -21,7 +21,7 @@ export default function Partnership() {
    items={[
     {
        category: "Market",
-       title: "Market Potential & Outlook",
+       title: "Market Potential & Outlook ",
        bullets: [
          "Swaram is well-positioned to attract large-scale, international clients due to its diverse service offerings and global presence.",
          "The combination of financial and technical leadership allows for a holistic approach to projects, from conception through to completion.",
