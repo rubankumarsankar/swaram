@@ -264,7 +264,7 @@ export default function WorkTogetherForm() {
           </div>
 
           {/* Right: Logo */}
-          <div className="md:col-span-5 flex items-center justify-center">
+          <div className="md:col-span-5 flex items-center mt-20 justify-center">
             <img
               src="/assets/swaram-logo.png"
               alt="SwaRam Ventures"

@@ -138,7 +138,7 @@ export default function ContactAndSubscribe() {
 
             <ul className="mt-6 space-y-4 text-sm">
               <li className="flex items-start gap-3">
-                <span className="mt-0.5 inline-flex h-5 w-5 items-center justify-center rounded-full bg-[var(--color-primary)]/10 text-[var(--color-primary)]">
+                <span className="mt-0.5 inline-flex h-5 w-5 items-center justify-center rounded-full text-[var(--color-primary)]">
                   <LuMail className="h-4 w-4" />
                 </span>
                 <a href="mailto:info@swaram.ae" className="hover:underline hover:text-secondary">
@@ -146,7 +146,7 @@ export default function ContactAndSubscribe() {
                 </a>
               </li>
               <li className="flex items-start gap-3">
-                <span className="mt-0.5 inline-flex h-5 w-5 items-center justify-center rounded-full bg-[var(--color-primary)]/10 text-[var(--color-primary)]">
+                <span className="mt-0.5 inline-flex h-5 w-5 items-center justify-center rounded-full  text-[var(--color-primary)]">
                   <LuMapPin className="h-4 w-4" />
                 </span>
                 <address className="not-italic">

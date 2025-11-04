@@ -3,8 +3,8 @@
 
 export default function WhyChooseUs() {
   return (
-    <section className="bg-white dark:bg-zinc-900 py-16">
-      <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+    <section className="bg-white  py-16">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
 
         {/* Header */}
         <div className="text-center">
@@ -59,7 +59,7 @@ function Feature({ img, title, desc }) {
         <h3 className="title text-2xl font-semibold text-black">{title}</h3>
       </div>
 
-      <p className="phara text-lg/6 text-black/60 mt-1">
+      <p className="phara text-lg/6 text-black/60 mt-1 ml-15">
         {desc}
       </p>
     </div>
