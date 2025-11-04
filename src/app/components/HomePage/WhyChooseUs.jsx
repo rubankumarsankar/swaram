@@ -22,17 +22,17 @@ export default function WhyChooseUs() {
         {/* Features */}
         <div className="mt-10 grid grid-cols-1 gap-8 md:grid-cols-3">
           <Feature
-            img="/icons/icon-1.png"
+            img="/icons/icon-1.svg"
             title="Global Expertise"
             desc="Decades of experience across multiple sectors, providing tailored services."
           />
           <Feature
-            img="/icons/icon-2.png"
+            img="/icons/icon-2.svg"
             title="End-to-End Solutions"
             desc="Integrated services, from sourcing to full-scale development, streamlining operations and enhancing efficiency."
           />
           <Feature
-            img="/icons/icon-3.png"
+            img="/icons/icon-3.svg"
             title="Cutting-Edge Innovation"
             desc="Adoption of the latest technologies to offer cutting-edge solutions."
           />

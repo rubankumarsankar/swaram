@@ -48,7 +48,7 @@ export default function HealthCareSlider() {
     <section className="bg-white dark:bg-zinc-900 py-12 sm:py-16">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 flex flex-col lg:flex-row items-center gap-8 sm:gap-10 relative">
 
-        {/* Mobile Buttons — Top Right */}
+        {/* Mobile buttons */}
         <div className="lg:hidden absolute right-4 top-4 z-10 flex gap-2">
           <button
             onClick={handlePrev}
@@ -66,22 +66,19 @@ export default function HealthCareSlider() {
 
         {/* Image */}
         <div className="w-full lg:w-1/2 order-2 lg:order-2">
-          <div className="relative mx-auto w-full max-w-md sm:max-w-xl lg:max-w-none
-                          aspect-[4/3] sm:aspect-[16/10] lg:aspect-video
-                          overflow-hidden rounded-2xl ring-1 ring-black/5 shadow-lg shadow-black/5 dark:ring-white/10">
+          <div className="relative w-full max-w-md sm:max-w-xl lg:max-w-none mx-auto 
+            aspect-[4/3] sm:aspect-[16/10] lg:aspect-video overflow-hidden  shadow-black/5 dark:ring-white/10"
+          >
             <img
               key={image}
               src={image}
               alt={title}
-              fill
-              className="object-contain"
-              priority={index === 0}
-              sizes="(max-width: 640px) 100vw, (max-width: 1024px) 80vw, 640px"
+              className="w-full h-full object-contain"
             />
           </div>
         </div>
 
-        {/* Text + Desktop Buttons */}
+        {/* Text */}
         <div className="w-full lg:w-1/2 space-y-3 order-3 lg:order-1">
           <h2 className="title text-primary">{title}</h2>
           <p className="subtitle text-black dark:text-white italic font-semibold">{subtitle}</p>

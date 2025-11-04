@@ -6,11 +6,10 @@ export default function Hero() {
   return (
     <section className="relative">
       <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
+        
         {/* Heading */}
         <div className="text-center">
-          <h1
-            className="title mx-auto max-w-3xl tracking-tight text-balance"
-          >
+          <h1 className="title mx-auto max-w-3xl tracking-tight">
             Shaping the Future of Global
             <br className="hidden sm:block" />
             Trade & Services
@@ -22,48 +21,34 @@ export default function Hero() {
 
           {/* Actions */}
           <div className="mt-6 flex flex-col items-center justify-center gap-3 sm:flex-row">
-            <Link
-              href="/services"
-              className="btn btn-primary px-6 py-3"
-            >
+            <Link href="/services" className="btn btn-primary px-6 py-3">
               Discover Me
             </Link>
 
-            <Link
-              href="/contact-us"
-              className="btn btn-outline px-6 py-3"
-            >
+            <Link href="/contact-us" className="btn btn-outline px-6 py-3">
               Contact Us
             </Link>
-
-
           </div>
         </div>
 
-        {/* Image Card */}
+        {/* Hero Image */}
         <div className="mt-10 sm:mt-12">
-          <div className="mx-auto w-full max-w-4xl overflow-hidden rounded-2xl shadow-lg shadow-black/5 ring-1 ring-black/5 dark:bg-zinc-900 dark:border-white/10 dark:ring-white/10">
-
-            <div className="relative aspect-[16/10] sm:aspect-video">
+          <div className="mx-auto w-full max-w-4xl overflow-hidden rounded-2xl shadow-lg shadow-black/5 ring-1 ring-black/5 dark:bg-zinc-900 dark:ring-white/10">
+            
+            <div className="relative aspect-[16/10] sm:aspect-video w-full h-full">
 
               {/* Desktop Image */}
               <img
                 src="/banner/home-banner.jpg"
                 alt="Global trade and services illustration"
-                fill
-                priority
-                className="hidden sm:block object-cover"
-                sizes="(max-width:1024px) 100vw, 800px"
+                className="hidden sm:block object-cover w-full h-full"
               />
 
               {/* Mobile Image */}
               <img
                 src="/banner/home-banner-mob.jpg"
                 alt="Global trade and services mobile illustration"
-                fill
-                priority
-                className="sm:hidden object-cover"
-                sizes="100vw"
+                className="sm:hidden object-cover w-full h-full"
               />
 
             </div>

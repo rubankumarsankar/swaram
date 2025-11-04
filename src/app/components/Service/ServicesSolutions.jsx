@@ -60,7 +60,7 @@ export default function ServicesSolutions({ title = "Services & Solutions", item
             whileInView={{ opacity: 1, y: 0, scale: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, ease: "easeOut" }}
-            className="title text-[var(--color-primary)] text-center relative inline-block"
+            className="title text-[var(--color-primary)] text-center relative inline-block mb-10"
           >
             {title}
             <motion.span
@@ -86,8 +86,8 @@ export default function ServicesSolutions({ title = "Services & Solutions", item
                 className="grid grid-cols-1 gap-6 md:grid-cols-12 md:gap-8"
               >
                 <div className={`${textFirst ? "md:col-span-6" : "md:col-span-5 md:order-2"} flex`}>
-                  <div className="w-full bg-white p-6 shadow-sm">
-                    <p className="text-lg uppercase tracking-wide text-black/60 border border-black/20 inline-block p-1 rounded-md mb-1">
+                  <div className="w-full bg-white p-6 ">
+                    <p className="text-sm uppercase tracking-wide text-black border border-black/20 inline-block p-1 rounded-md mb-1">
                       {it.category}
                     </p>
                     <h3 className="title text-[var(--color-primary)] leading-tight">

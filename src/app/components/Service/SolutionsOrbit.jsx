@@ -4,11 +4,11 @@ import { motion } from "framer-motion";
 
 const pills = [
   { label: "Healthcare", pos: "left-[10%] top-[20%]" },
-  { label: "Infrastructure &\nConstruction", pos: "right-[10%] top-[20%]" },
-  { label: "Global\nTrading", pos: "left-[6%] top-1/2 -translate-y-1/2" },
-  { label: "Logistics & Supply\nChain Management", pos: "right-[6%] top-1/2 -translate-y-1/2" },
-  { label: "Preventive & Supportive\nSolutions", pos: "left-[4%] bottom-[18%]" },
-  { label: "Energy\nSolutions", pos: "right-[20%] bottom-[18%]" },
+  { label: "Infrastructure & Construction", pos: "right-[10%] top-[20%]" },
+  { label: "Global Trading", pos: "left-[6%] top-1/2 -translate-y-1/2" },
+  { label: "Logistics & Supply Chain Management", pos: "right-[0%] top-1/2 -translate-y-1/2" },
+  { label: "Preventive & Supportive Solutions", pos: "left-[4%] bottom-[18%]" },
+  { label: "Energy Solutions", pos: "right-[20%] bottom-[18%]" },
 ];
 
 const pillVariant = {
@@ -23,7 +23,7 @@ const pillVariant = {
 
 export default function SolutionsOrbit() {
   return (
-    <section className="bg-white dark:bg-zinc-900">
+    <section className="bg-white">
       <div className="mx-auto max-w-5xl px-4 sm:px-6 py-10">
 
         {/* Title */}
@@ -35,7 +35,7 @@ export default function SolutionsOrbit() {
         </div>
 
         {/* Orbit stage (desktop only) */}
-        <div className="relative mx-auto aspect-[3/2] w-full max-w-[880px] hidden lg:block">
+        <div className="relative mx-auto aspect-[3/2] w-full max-w-7xl hidden lg:block">
           {/* Center logo */}
           <motion.div
             initial={{ scale: 0.95, opacity: 0 }}
@@ -81,7 +81,7 @@ export default function SolutionsOrbit() {
               initial="hidden"
               whileInView="show"
               viewport={{ once: true }}
-              className="rounded-md bg-white dark:bg-zinc-800 px-4 py-3 text-[13px] md:text-sm font-medium text-gray-800 dark:text-white shadow-[0_8px_18px_rgba(0,0,0,.08)] ring-1 ring-black/5 dark:ring-white/10"
+              className="rounded-md bg-white px-4 py-3 text-[13px] md:text-sm font-bold text-black dark:text-white shadow-[0_8px_18px_rgba(0,0,0,.08)] ring-1 ring-black/5 dark:ring-white/10"
             >
               <span className="whitespace-pre leading-tight">{p.label}</span>
             </motion.div>

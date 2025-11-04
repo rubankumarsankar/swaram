@@ -16,7 +16,7 @@ export default function Header() {
   const [open, setOpen] = useState(false);
   const pathname = usePathname();
 
-  // Close on route change
+  // Close drawer on route change (safety net)
   useEffect(() => setOpen(false), [pathname]);
 
   // ESC to close
@@ -26,7 +26,7 @@ export default function Header() {
     return () => window.removeEventListener("keydown", onKey);
   }, [open]);
 
-  // Lock scroll when open
+  // Prevent body scroll while open
   useEffect(() => {
     document.documentElement.style.overflow = open ? "hidden" : "";
     return () => (document.documentElement.style.overflow = "");
@@ -34,27 +34,24 @@ export default function Header() {
 
   return (
     <>
-      <header className="sticky top-0 z-50 border-b border-black/5 bg-white/70 backdrop-blur-md dark:bg-zinc-900/70 dark:border-white/10">
+      <header className="sticky top-0 z-50 bg-white border-b border-black/5">
         <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-3">
-            <img src="/swaram.png" width={120} height={32} alt="SwaRam Ventures" priority />
+          <Link href="/" className="flex items-center gap-2" onClick={() => setOpen(false)}>
+            <img src="/swaram.png" width={120} height={32} alt="SwaRam Ventures" />
           </Link>
 
           {/* Desktop nav */}
-          <nav className="hidden lg:flex items-center gap-10">
+          <nav className="hidden lg:flex items-center gap-8">
             {nav.map((item) => {
-              const isActive = pathname === item.href;
+              const active = pathname === item.href;
               return (
                 <Link
                   key={item.href}
                   href={item.href}
-                  className={`relative text-[16px] pt-1 pb-1 transition ${
-                    isActive ? "text-[var(--color-secondary)] font-semibold" : "text-black dark:text-white"
-                  } group`}
+                  className={`text-[15px] ${active ? "text-[var(--color-secondary)] font-semibold" : "text-black"}`}
                 >
                   {item.label}
-                  <span className="absolute bottom-0 left-0 h-[2px] w-0 bg-[var(--color-secondary)] transition-all duration-200 group-hover:w-full" />
                 </Link>
               );
             })}
@@ -62,18 +59,18 @@ export default function Header() {
 
           {/* Mobile toggle */}
           <button
-            className="lg:hidden inline-flex h-11 w-11 items-center justify-center rounded-2xl border border-black/10 bg-white text-black shadow-sm transition active:scale-[0.98] dark:border-white/10 dark:bg-zinc-900 dark:text-white"
+            className="lg:hidden inline-flex h-10 w-10 items-center justify-center rounded-md border border-black/10 bg-white"
             aria-label={open ? "Close menu" : "Open menu"}
             aria-expanded={open}
             aria-controls="mobile-drawer"
             onClick={() => setOpen((v) => !v)}
           >
             {!open ? (
-              <svg className="h-6 w-6" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2" fill="none">
+              <svg className="h-5 w-5" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2" fill="none">
                 <path d="M4 6h16M4 12h16M4 18h16" />
               </svg>
             ) : (
-              <svg className="h-6 w-6" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2" fill="none">
+              <svg className="h-5 w-5" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2" fill="none">
                 <path d="M6 6l12 12M18 6L6 18" />
               </svg>
             )}
@@ -81,30 +78,30 @@ export default function Header() {
         </div>
       </header>
 
-      {/* Overlay (outside header, covers everything) */}
+      {/* Overlay */}
       <div
         aria-hidden="true"
-        className={`fixed inset-0 z-40 bg-black/40 backdrop-blur-sm transition-opacity duration-300 ${
+        onClick={() => setOpen(false)}
+        className={`fixed inset-0 z-40 bg-black/40 transition-opacity duration-200 ${
           open ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
         }`}
-        onClick={() => setOpen(false)}
       />
 
-      {/* Right drawer (mobile) */}
+      {/* Right drawer */}
       <aside
         id="mobile-drawer"
-        className={`fixed right-0 top-0 z-50 h-[100dvh] w-[86%] max-w-sm border-l border-black/10 bg-white/80 backdrop-blur-xl shadow-2xl dark:bg-zinc-900/80 dark:border-white/10
-        transform transition-transform duration-300 ease-out
-        ${open ? "translate-x-0" : "translate-x-full"}`}
         role="dialog"
         aria-modal="true"
+        className={`fixed right-0 top-0 z-50 h-[100dvh] w-[85%] max-w-sm bg-white border-l border-black/10 shadow-xl
+        transition-transform duration-200 ${open ? "translate-x-0" : "translate-x-full"}`}
       >
-        <div className="pt-[max(env(safe-area-inset-top),0px)]" />
-        <div className="flex h-16 items-center justify-between px-4 border-b border-black/5 dark:border-white/10">
-          <span className="text-sm font-medium text-zinc-700 dark:text-zinc-200">Menu</span>
+        {/* Top row */}
+        <div className="flex h-16 items-center justify-between px-4 border-b border-black/10">
+          <span className="text-sm font-medium">Menu</span>
           <button
-            className="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-black/10 bg-white text-black shadow-sm transition hover:bg-black/5 dark:border-white/10 dark:bg-zinc-900 dark:text-white"
+            className="inline-flex h-9 w-9 items-center justify-center rounded-md border border-black/10 bg-white"
             onClick={() => setOpen(false)}
+            aria-label="Close"
           >
             <svg className="h-5 w-5" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2" fill="none">
               <path d="M6 6l12 12M18 6L6 18" />
@@ -112,18 +109,19 @@ export default function Header() {
           </button>
         </div>
 
-        <nav className="px-4 py-4">
-          <ul className="space-y-1">
+        {/* Links */}
+        <nav className="px-2 py-2">
+          <ul>
             {nav.map((item) => {
-              const isActive = pathname === item.href;
+              const active = pathname === item.href;
               return (
                 <li key={item.href}>
                   <Link
                     href={item.href}
-                    onClick={() => setOpen(false)}
-                    className={`block rounded-xl px-4 py-3 text-[16px] leading-none active:scale-[0.995] transition
-                      ${isActive ? "text-[var(--color-secondary)] font-semibold" : "text-zinc-900 dark:text-zinc-100"}
-                      hover:bg-black/[0.04] dark:hover:bg-white/[0.06]`}
+                    onClick={() => setOpen(false)} 
+                    className={`block rounded-md px-3 py-3 text-[15px] ${
+                      active ? "text-[var(--color-secondary)] font-semibold" : "text-zinc-900"
+                    } hover:bg-black/[0.04]`}
                   >
                     {item.label}
                   </Link>
@@ -131,21 +129,8 @@ export default function Header() {
               );
             })}
           </ul>
-
-          
         </nav>
-
-        <div className="pb-[max(env(safe-area-inset-bottom),16px)]" />
       </aside>
-
-      {/* Reduced motion support */}
-      <style jsx global>{`
-        @media (prefers-reduced-motion: reduce) {
-          #mobile-drawer {
-            transition: none !important;
-          }
-        }
-      `}</style>
     </>
   );
 }

@@ -27,8 +27,8 @@ export default function PartnershipSolutions({ title = "Services & Solutions", i
               >
                 {/* Text */}
                 <div className={`${textFirst ? "md:col-span-6" : "md:col-span-5 md:order-2"} flex`}>
-                  <div className="w-full bg-white p-6 shadow-sm ">
-                    <p className="text-lg uppercase tracking-wide text-black/60 dark:text-white/60 mb-1">
+                  <div className="w-full bg-white p-6">
+                    <p className="text-sm uppercase tracking-wide text-black/60 border border-black/20 inline-block p-1 rounded-md mb-1">
                       {it.category}
                     </p>
                     <h3 className="title text-[var(--color-primary)] leading-tight">

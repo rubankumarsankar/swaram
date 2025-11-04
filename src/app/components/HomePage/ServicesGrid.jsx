@@ -26,7 +26,7 @@ const services = [
 
 export default function ServicesGrid() {
   return (
-    <section className=" py-14">
+    <section className=" bg-[#f9f9f9] py-14">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 gap-10 lg:grid-cols-12">
           
@@ -57,11 +57,11 @@ export default function ServicesGrid() {
                   <li key={s.title} className="h-full">
                     <Link
                       href={s.href}
-                      className={`group block h-full border p-4 shadow-sm outline-none transition duration-300
+                      className={`group block h-full p-4 outline-none transition duration-300
                         ${
                           isFeatured
-                            ? "bg-[color:var(--color-primary)] text-white border-[color:var(--color-primary)] shadow-md cursor-default"
-                            : "bg-white border-black/10 hover:bg-[color:var(--color-primary)] hover:text-white hover:border-[color:var(--color-primary)]"
+                            ? "bg-[color:var(--color-primary)] text-white cursor-default"
+                            : "bg-white border-black/10 hover:bg-[color:var(--color-primary)] hover:text-white "
                         }
                       `}
                     >

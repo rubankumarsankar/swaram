@@ -5,17 +5,17 @@ import { motion } from "framer-motion";
 export default function CoreValues() {
   const items = [
     {
-      img: "/icons/icon-1.png",
+      img: "/icons/icon-1.svg",
       title: "Integrity",
       desc: "Conducting business with the highest ethical standards and transparency.",
     },
     {
-      img: "/icons/icon-2.png",
+      img: "/icons/icon-2.svg",
       title: "Innovation",
       desc: "Embracing the latest technologies and creative solutions to drive progress.",
     },
     {
-      img: "/icons/icon-3.png",
+      img: "/icons/icon-3.svg",
       title: "Sustainability",
       desc: "Committed to environmentally and socially responsible business practices.",
     },
