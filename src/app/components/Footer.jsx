@@ -2,33 +2,25 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import Image from "next/image";
-import {
-  FaFacebookF,
-  FaInstagram,
-  FaLinkedinIn,
-  FaRegEnvelope,
-} from "react-icons/fa";
+import { FaFacebookF, FaInstagram, FaLinkedinIn, FaRegEnvelope } from "react-icons/fa";
 
 export default function Footer() {
   const [email, setEmail] = useState("");
-  const [botcheck, setBotcheck] = useState(false); // honeypot
+  const [botcheck, setBotcheck] = useState("");
   const [loading, setLoading] = useState(false);
   const [msg, setMsg] = useState({ type: "", text: "" });
 
-  const WEB3FORMS_ACCESS_KEY = "9527ea59-002e-43a5-8166-763352c37002"; // paste your key
+  const WEB3FORMS_ACCESS_KEY = "9527ea59-002e-43a5-8166-763352c37002";
 
   const handleSubscribe = async (e) => {
     e.preventDefault();
     setMsg({ type: "", text: "" });
+    if (botcheck) return;
 
-    // quick client validation
-    const ok = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-    if (!ok) {
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
       setMsg({ type: "error", text: "Please enter a valid email." });
       return;
     }
-    if (botcheck) return; // silently ignore bots
 
     try {
       setLoading(true);
@@ -37,7 +29,6 @@ export default function Footer() {
       fd.append("from_name", "Swaram Website");
       fd.append("subject", "New Newsletter Subscriber");
       fd.append("reply_to", email);
-      // keep the field name simple for template mapping
       fd.append("email", email);
 
       const res = await fetch("https://api.web3forms.com/submit", {
@@ -45,184 +36,126 @@ export default function Footer() {
         body: fd,
         headers: { Accept: "application/json" },
       });
-      const json = await res.json();
 
+      const json = await res.json();
       if (json?.success) {
         setMsg({ type: "success", text: "Subscribed successfully." });
         setEmail("");
-      }
-      else {
-        setMsg({ type: "error", text: "Subscription failed. Try again." });
-        console.error("Web3Forms error:", json);
-      }
-    } catch (err) {
+      } else setMsg({ type: "error", text: "Subscription failed. Try again." });
+    } catch {
       setMsg({ type: "error", text: "Network error. Please try again." });
-      console.error("Web3Forms exception:", err);
     } finally {
       setLoading(false);
     }
   };
 
   return (
-    <footer className="bg-white border-t border-gray-200 text-[#0A0A0A]">
-      <div className="max-w-7xl mx-auto px-4 py-6">
-        {/* Top grid */}
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-10">
-          {/* Logo */}
-          <div>
-            <Link href="/" className="inline-flex items-center">
-              <Image
-                src="/swaram.png"
-                alt="SwaRam Ventures"
-                width={140}
-                height={40}
-              />
-            </Link>
-            <p className="mt-4 text-[14px] leading-5 text-gray-600 max-w-60">
-              Massa blandit semper varius faucibus. Suspendisse viverra
-              venenatis placerat nam ut. Pellentesque sit id tempor turpis.
+    <footer className="bg-[#f5f5f5] border-t border-gray-200 dark:border-white/10 text-[#0A0A0A] dark:text-zinc-100">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-10">
+
+        {/* Top Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-8">
+
+          {/* Logo/Desc */}
+          <div className="text-center sm:text-center lg:col-span-4">
+            <img
+              src="/swaram.png"
+              width="160"
+              height="46"
+              alt="Swaram Ventures"
+              className="mx-auto sm:mx-auto lg:mx-0 mb-5"
+            />
+            <p className="mt-4 text-sm text-gray-600 dark:text-zinc-400 max-w-xs mx-auto sm:mx-0">
+              Massa blandit semper varius faucibus. Suspendisse viverra venenatis placerat nam ut.
             </p>
           </div>
 
-          {/* Links */}
-          <div>
-            <h4 className="font-semibold text-[16px] mb-3">LINKS</h4>
-            <ul className="space-y-2 text-[14px]">
-              {[
-                "How it works",
-                "Trading",
-                "Features",
-                "Testimonial",
-                "Blogs",
-              ].map((i) => (
-                <li key={i}>
-                  <Link
-                    href="#"
-                    className="transition hover:text-[var(--color-secondary)]"
-                  >
-                    {i}
-                  </Link>
-                </li>
-              ))}
-            </ul>
+          {/* Links + Legal (same group in mobile & desktop) */}
+          <div className="grid grid-cols-2 gap-8 text-center sm:text-left lg:col-span-4">
+            {/* Links */}
+            <div>
+              <h4 className="font-semibold mb-3 text-base">LINKS</h4>
+              <ul className="space-y-2 text-sm">
+                {["How it works", "Trading", "Features", "Testimonial", "Blogs"].map((i) => (
+                  <li key={i}>
+                    <Link href="#" className="hover:text-[var(--color-secondary)] transition">
+                      {i}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Legal */}
+            <div>
+              <h4 className="font-semibold mb-3 text-base">LEGAL</h4>
+              <ul className="space-y-2 text-sm">
+                {["Terms of use", "Terms & conditions", "Privacy policy", "Cookie policy"].map((i) => (
+                  <li key={i}>
+                    <Link href="#" className="hover:text-[var(--color-secondary)] transition">
+                      {i}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
 
-          {/* Legal */}
-          <div>
-            <h4 className="font-semibold text-[16px] mb-3">LEGAL</h4>
-            <ul className="space-y-2 text-[14px]">
-              {[
-                "Terms of use",
-                "Terms & conditions",
-                "Privacy policy",
-                "Cookie policy",
-              ].map((i) => (
-                <li key={i}>
-                  <Link
-                    href="#"
-                    className="transition hover:text-[var(--color-secondary)]"
-                  >
-                    {i}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
+          {/* Newsletter */}
+          <div className="text-center sm:text-left lg:col-span-4">
+            <h4 className="font-semibold mb-3 text-base">Newsletter</h4>
+            <p className="text-sm mb-3 text-gray-600 dark:text-zinc-400">Over 25,000 subscribed</p>
 
-          {/* Newsletter (Web3Forms) */}
-          <div>
-            <h4 className="font-semibold text-[16px] mb-3">Newsletter</h4>
-            <p className="text-[14px] mb-3 text-gray-600">
-              Over 25,000 people have subscribed
-            </p>
+            <form onSubmit={handleSubscribe} className="max-w-md mx-auto sm:mx-0">
+              <input type="text" value={botcheck} onChange={(e) => setBotcheck(e.target.value)} className="hidden" />
 
-            <form onSubmit={handleSubscribe} noValidate>
-              {/* honeypot (hidden) */}
-              <input
-                type="checkbox"
-                tabIndex={-1}
-                className="hidden"
-                aria-hidden="true"
-                checked={botcheck}
-                onChange={(e) => setBotcheck(e.target.checked)}
-              />
+              <div className="flex flex-col sm:flex-row gap-2">
+                <div className="relative flex-1">
+                  <input
+                    type="email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    placeholder="Your Email"
+                    className="border border-gray-300 rounded-md w-full py-2.5 pl-3 pr-9 text-sm bg-white"
+                    required
+                  />
+                  <FaRegEnvelope className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 text-sm" />
+                </div>
 
-              <div className="relative w-full mb-2">
-                <input
-                  type="email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  placeholder="Enter your email address"
-                  className="border border-gray-300 rounded-md w-full py-2 px-3 text-[14px] pr-10 outline-none focus:border-[var(--color-secondary)]"
-                  aria-label="Email address"
-                  required
-                />
-                <FaRegEnvelope className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 text-[14px]" />
+                <button type="submit" disabled={loading} className="btn btn-primary px-5 py-2.5 text-sm">
+                  {loading ? "Subscribe..." : "Subscribe"}
+                </button>
               </div>
 
-              <button
-                type="submit"
-                disabled={loading}
-                className="btn btn-primary px-6 py-3 disabled:opacity-60"
-              >
-                {loading ? "Subscribing..." : "Subscribe"}
-              </button>
-
-              {msg.text ? (
-                <p
-                  className={[
-                    "mt-2 text-[12px]",
-                    msg.type === "success"
-                      ? "text-emerald-600"
-                      : "text-red-600",
-                  ].join(" ")}
-                >
+              {msg.text && (
+                <p className={`mt-2 text-xs ${msg.type === "success" ? "text-green-600" : "text-red-600"}`}>
                   {msg.text}
                 </p>
-              ) : null}
+              )}
             </form>
           </div>
         </div>
 
-        <hr className="my-8 border-gray-200" />
+        <hr className="my-8 border-gray-300" />
 
-        {/* Bottom */}
-        <div className="flex flex-col md:flex-row md:justify-between md:items-center gap-4 text-[13px] text-gray-600">
-          {/* Left: Copyright */}
-          <p className="mt-1"> Copyright  © {new Date().getFullYear()} Swaram</p>
+        {/* Bottom Bar */}
+        <div className="flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-gray-600 dark:text-zinc-400 text-center">
 
-          {/* Center: Designed & Developed by */}
-          <div className="flex flex-col items-center text-center">
-            <div className="flex items-center gap-2">
-              <p className="text-gray-600">Designed & Developed by</p>
-              <Link
-                href="https://ayatiworks.com"
-                target="_blank"
-                rel="noopener"
-              >
-                <Image
-                  src="/ayati.png" // ✅ update path if different
-                  alt="Ayatiworks"
-                  width={70}
-                  height={18}
-                  className="opacity-80 hover:opacity-100 transition"
-                />
-              </Link>
-            </div>
-          </div>
+          <p>© {new Date().getFullYear()} Swaram</p>
 
-          {/* Right: Social icons */}
-          <div className="flex gap-4 text-[16px]">
-            <Link href="#" className="hover:text-[var(--color-secondary)]">
-              <FaFacebookF />
-            </Link>
-            <Link href="#" className="hover:text-[var(--color-secondary)]">
-              <FaInstagram />
-            </Link>
-            <Link href="#" className="hover:text-[var(--color-secondary)]">
-              <FaLinkedinIn />
+          <div className="flex items-center gap-2">
+            <p>Designed & Developed by</p>
+            <Link href="https://ayatiworks.com" target="_blank">
+              <img src="/ayati.png" width={84} height={22} alt="Ayatiworks" className="opacity-80 hover:opacity-100" />
             </Link>
           </div>
+
+          <div className="flex gap-4 text-lg">
+            <Link href="#"><FaFacebookF className="hover:text-[var(--color-secondary)]" /></Link>
+            <Link href="#"><FaInstagram className="hover:text-[var(--color-secondary)]" /></Link>
+            <Link href="#"><FaLinkedinIn className="hover:text-[var(--color-secondary)]" /></Link>
+          </div>
+
         </div>
       </div>
     </footer>

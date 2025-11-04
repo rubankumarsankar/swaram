@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 
 export default function WhyChooseUs() {
   return (
@@ -49,7 +48,7 @@ function Feature({ img, title, desc }) {
     <div className="flex flex-col gap-2">
       <div className="flex items-center gap-2">
         <span className="inline-flex h-14 w-14 items-center justify-center  p-2">
-          <Image
+          <img
             src={img}
             alt={title}
             width={30}

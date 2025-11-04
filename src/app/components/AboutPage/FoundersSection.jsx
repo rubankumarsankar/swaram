@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import { motion } from "framer-motion";
 import { FaHandPointRight } from "react-icons/fa6";
 
@@ -48,7 +47,7 @@ export default function FoundersSection() {
     <section className="py-16 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
 
-        {/* Section title */}
+        {/* Section Title */}
         <div className="text-center mb-12">
           <motion.h2
             initial={{ opacity: 0, y: 20, scale: 0.95 }}
@@ -68,6 +67,7 @@ export default function FoundersSection() {
           </motion.h2>
         </div>
 
+        {/* founders list */}
         <div className="space-y-20">
           {founders.map((f, idx) => (
             <motion.div
@@ -81,36 +81,33 @@ export default function FoundersSection() {
               }`}
             >
               {/* Image */}
-              <div className="lg:col-span-4 relative h-[420px] md:h-[520px] overflow-hidden rounded-lg shadow-md">
-                <Image
+              <div className="lg:col-span-4 relative h-[420px] md:h-[520px] rounded-lg overflow-hidden shadow-md">
+                <img
                   src={f.img}
                   alt={f.name}
-                  fill
-                  className="object-cover"
-                  priority
+                  className="absolute inset-0 w-full h-full object-cover"
                 />
               </div>
 
-              {/* Content */}
+              {/* Text */}
               <div className="lg:col-span-8 p-6">
-                <p className="phara text-lg font-medium text-gray-600 mb-1">
-                  {f.title}
-                </p>
+                <p className="phara text-lg font-medium text-gray-600 mb-1">{f.title}</p>
                 <h3 className="title text-[var(--color-primary)] leading-tight">{f.name}</h3>
                 <p className="phara text-gray-600 mb-4 text-lg">{f.role}</p>
+
                 <ul className="space-y-3 text-base md:text-lg text-black/80 leading-relaxed">
                   {f.points.map((p, i) => (
                     <li key={i} className="flex items-start gap-2">
-  <FaHandPointRight className="mt-1 text-secondary" />
-  <span>{p}</span>
-</li>
-
+                      <FaHandPointRight className="mt-1 text-[var(--color-secondary)]" />
+                      <span>{p}</span>
+                    </li>
                   ))}
                 </ul>
               </div>
             </motion.div>
           ))}
         </div>
+
       </div>
     </section>
   );

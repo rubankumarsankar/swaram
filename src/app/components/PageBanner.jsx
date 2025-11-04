@@ -2,7 +2,6 @@
 
 import { usePathname } from "next/navigation";
 import Link from "next/link";
-import Image from "next/image";
 import { FaHome, FaAngleRight } from "react-icons/fa";
 
 export default function PageBanner({
@@ -13,28 +12,27 @@ export default function PageBanner({
   const segments = pathname.split("/").filter(Boolean);
 
   return (
-    <section className="relative h-[600px] md:h-[600px] max-w-8xl mx-auto w-full flex items-end">
+    <section className="relative h-[600px] md:h-[600px] w-full flex items-end">
 
       {/* Desktop Banner */}
-      <Image
+      <img
         src={bgDesktop}
         alt="Banner"
-        fill
-        className="object-cover hidden md:block "
-        priority
+        className="hidden md:block absolute inset-0 w-full h-full object-cover"
       />
 
       {/* Mobile Banner */}
-      <Image
+      <img
         src={bgMobile}
         alt="Banner"
-        fill
-        className="object-cover md:hidden "
-        priority
+        className="md:hidden absolute inset-0 w-full h-full object-cover"
       />
 
-      {/* Breadcrumb bottom-left */}
-      <div className="relative z-10 px-5 pb-6 md:px-10 md:pb-8 w-full max-w-8xl mx-auto">
+      {/* Overlay (optional dark tint for readability) */}
+      <div className="absolute inset-0 bg-black/30"></div>
+
+      {/* Breadcrumb Container */}
+      <div className="relative z-10 px-5 pb-6 md:px-10 md:pb-8 w-full">
         <Breadcrumb segments={segments} />
       </div>
     </section>

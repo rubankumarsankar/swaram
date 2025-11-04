@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import { motion } from "framer-motion";
 
 export default function CoreValues() {
@@ -64,7 +63,7 @@ export default function CoreValues() {
             >
               <div className="flex items-start gap-3">
                 <span className="inline-flex h-10 w-10 items-center justify-center">
-                  <Image
+                  <img
                     src={v.img}
                     alt={v.title}
                     width={28}

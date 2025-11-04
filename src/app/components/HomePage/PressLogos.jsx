@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 
 const logos = [
   { src: "/icons/hero-icon-1.png", alt: "Fortune" },
@@ -20,7 +19,7 @@ export default function PressLogos() {
           {logos.map((logo) => (
             <li key={logo.alt} className="w-32 sm:w-40">
               <div className="relative h-6 sm:h-8">
-                <Image
+                <img
                   src={logo.src}
                   alt={logo.alt}
                   fill

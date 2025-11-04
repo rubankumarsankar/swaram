@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import { motion } from "framer-motion";
 
 const featureList = [
@@ -59,7 +58,7 @@ export default function PartnershipOverview() {
               viewport={{ once: true }}
               className="absolute left-1/2 top-1/2 h-full w-full -translate-x-1/2 -translate-y-1/2"
             >
-              <Image
+              <img
                 src="/assets/partners-img.png"
                 alt="Partners shaking hands"
                 fill
@@ -78,14 +77,12 @@ export default function PartnershipOverview() {
                   initial="hidden"
                   whileInView="show"
                   viewport={{ once: true }}
-                  className={`absolute flex items-center gap-2 ${
-                    i === 0 && "left-[-110px] top-[22%]"
-                  } ${i === 1 && "right-[-150px] top-[22%]"} ${
-                    i === 2 && "left-[-220px] bottom-[22%]"
-                  } ${i === 3 && "right-[-260px] bottom-[22%]"} `}
+                  className={`absolute flex items-center gap-2 ${i === 0 && "left-[-110px] top-[22%]"
+                    } ${i === 1 && "right-[-150px] top-[22%]"} ${i === 2 && "left-[-220px] bottom-[22%]"
+                    } ${i === 3 && "right-[-260px] bottom-[22%]"} `}
                 >
                   <span className="inline-flex items-center justify-center">
-                    <Image
+                    <img
                       src={f.img}
                       alt={f.title}
                       width={56}
@@ -114,7 +111,7 @@ export default function PartnershipOverview() {
               viewport={{ once: true }}
               className="flex items-center gap-3 rounded-lg border border-black/10 bg-white p-3 shadow-sm dark:bg-zinc-900 dark:border-white/15"
             >
-              <Image
+              <img
                 src={f.img}
                 alt={f.title}
                 width={48}

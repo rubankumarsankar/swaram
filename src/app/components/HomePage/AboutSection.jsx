@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import { motion, useInView } from "framer-motion";
 import CountUp from "react-countup";
 import { useEffect, useRef, useState } from "react";
@@ -59,7 +58,7 @@ export default function AboutSection() {
             className="lg:col-span-3"
           >
             <div className="relative w-full h-[440px]  overflow-hidden shadow-lg bg-gray-100">
-              <Image
+              <img
                 src="/assets/about-profile.png"
                 alt="Founder"
                 fill

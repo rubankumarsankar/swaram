@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import { motion } from "framer-motion";
 
 const pills = [
@@ -25,7 +24,7 @@ const pillVariant = {
 export default function SolutionsOrbit() {
   return (
     <section className="bg-white dark:bg-zinc-900">
-      <div className="mx-auto max-w-5xl px-4 sm:px-6">
+      <div className="mx-auto max-w-5xl px-4 sm:px-6 py-10">
 
         {/* Title */}
         <div className="text-center mb-8">
@@ -35,10 +34,8 @@ export default function SolutionsOrbit() {
           </h2>
         </div>
 
-        {/* Orbit stage */}
-        <div className="relative mx-auto aspect-[3/2] w-full max-w-[880px]">
-          
-
+        {/* Orbit stage (desktop only) */}
+        <div className="relative mx-auto aspect-[3/2] w-full max-w-[880px] hidden lg:block">
           {/* Center logo */}
           <motion.div
             initial={{ scale: 0.95, opacity: 0 }}
@@ -47,18 +44,16 @@ export default function SolutionsOrbit() {
             transition={{ duration: 0.5, ease: "easeOut" }}
             className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"
           >
-            {/* Replace with your logo asset */}
-            <Image
-              src="/assets/centered-icon.png" // e.g. a square mark
+            <img
+              src="/assets/centered-icon.png"
               alt="SwaRam mark"
               width={210}
               height={210}
-              className="drop-shadow-sm"
-              priority
+              className="drop-shadow-sm max-w-[42vw] h-auto"
             />
           </motion.div>
 
-          {/* Pills around the orbit (lg+) */}
+          {/* Pills around orbit */}
           {pills.map((p, i) => (
             <motion.div
               key={p.label}
@@ -69,7 +64,7 @@ export default function SolutionsOrbit() {
               viewport={{ once: true, margin: "-80px" }}
               className={`absolute ${p.pos}`}
             >
-              <div className="whitespace-pre leading-tight rounded-md bg-white px-4 py-3 text-xl phara font-medium text-gray-800 shadow-[0_8px_18px_rgba(0,0,0,.08)]">
+              <div className="whitespace-pre leading-tight rounded-md bg-white/90 dark:bg-zinc-800/90 backdrop-blur px-4 py-3 text-lg phara font-medium text-gray-800 dark:text-white shadow-[0_8px_18px_rgba(0,0,0,.08)] ring-1 ring-black/5 dark:ring-white/10">
                 {p.label}
               </div>
             </motion.div>
@@ -86,12 +81,13 @@ export default function SolutionsOrbit() {
               initial="hidden"
               whileInView="show"
               viewport={{ once: true }}
-              className="rounded-md bg-white px-4 py-3 text-[13px] font-medium text-gray-800 shadow-[0_8px_18px_rgba(0,0,0,.08)] dark:bg-zinc-800 dark:text-white"
+              className="rounded-md bg-white dark:bg-zinc-800 px-4 py-3 text-[13px] md:text-sm font-medium text-gray-800 dark:text-white shadow-[0_8px_18px_rgba(0,0,0,.08)] ring-1 ring-black/5 dark:ring-white/10"
             >
               <span className="whitespace-pre leading-tight">{p.label}</span>
             </motion.div>
           ))}
         </div>
+
       </div>
     </section>
   );

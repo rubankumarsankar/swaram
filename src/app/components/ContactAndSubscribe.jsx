@@ -130,7 +130,7 @@ export default function ContactAndSubscribe() {
           {/* Left: contact info */}
           <aside className="md:col-span-6">
             <p className="text-xs uppercase tracking-wide text-black/60 mb-1">Contact Info</p>
-            <h3 className="text-[24px] font-extrabold leading-snug text-[var(--color-primary)]">
+            <h3 className="title">
               We are always
               <br /> happy to
               <br /> assist you
@@ -141,7 +141,7 @@ export default function ContactAndSubscribe() {
                 <span className="mt-0.5 inline-flex h-5 w-5 items-center justify-center rounded-full bg-[var(--color-primary)]/10 text-[var(--color-primary)]">
                   <LuMail className="h-4 w-4" />
                 </span>
-                <a href="mailto:info@swaram.ae" className="hover:underline">
+                <a href="mailto:info@swaram.ae" className="hover:underline hover:text-secondary">
                   info@swaram.ae
                 </a>
               </li>

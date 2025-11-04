@@ -1,7 +1,6 @@
 "use client";
 
 import { useForm } from "react-hook-form";
-import Image from "next/image";
 import React from "react";
 
 /* -------------------- Mini toast system -------------------- */
@@ -266,7 +265,7 @@ export default function WorkTogetherForm() {
 
           {/* Right: Logo */}
           <div className="md:col-span-5 flex items-center justify-center">
-            <Image
+            <img
               src="/assets/swaram-logo.png"
               alt="SwaRam Ventures"
               width={420}

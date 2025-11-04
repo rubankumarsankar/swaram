@@ -1,7 +1,6 @@
 
 "use client";
 
-import Image from "next/image";
 import { motion } from "framer-motion";
 
 const fade = {
@@ -48,7 +47,7 @@ export default function PartnershipSolutions({ title = "Services & Solutions", i
                 {/* Image */}
                 <div className={`${textFirst ? "md:col-span-6" : "md:col-span-7 md:order-1"}`}>
                   <div className="relative h-[400px] md:h-[500px] overflow-hidden shadow-md">
-                    <Image
+                    <img
                       src={it.image}
                       alt={it.title}
                       fill

@@ -1,4 +1,3 @@
-import Image from "next/image";
 import Hero from "./components/HomePage/HeroSection";
 import PressLogos from "./components/HomePage/PressLogos";
 import AboutSection from "./components/HomePage/AboutSection";

@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import { motion } from "framer-motion";
 
 const features = [
@@ -65,7 +64,7 @@ export default function PartnershipSection() {
               viewport={{ once: true }}
               className="absolute left-1/2 top-1/2 h-full w-full -translate-x-1/2 -translate-y-1/2"
             >
-              <Image
+              <img
                 src="/assets/partners-img.png"
                 alt="Partners shaking hands"
                 fill
@@ -118,7 +117,7 @@ export default function PartnershipSection() {
             >
               <div className="flex items-start gap-3">
                 <div className="h-20 w-20 flex-shrink-0">
-                  <Image
+                  <img
                     src={f.img}
                     alt={f.title}
                     width={80}
@@ -157,7 +156,7 @@ function FeatureCard({ i = 0, className = "", title, desc, img }) {
     >
       <div className="flex items-start gap-3">
         <div className="h-10 w-10 flex-shrink-0">
-          <Image
+          <img
             src={img}
             alt={title}
             width={44}

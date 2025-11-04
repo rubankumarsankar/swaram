@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import { motion } from "framer-motion";
 
 /* ✅ Keywords you want to bold across services */
@@ -109,7 +108,7 @@ export default function ServicesSolutions({ title = "Services & Solutions", item
 
                 <div className={`${textFirst ? "md:col-span-6" : "md:col-span-7 md:order-1"}`}>
                   <div className="relative h-[400px] md:h-[500px] overflow-hidden shadow-md">
-                    <Image
+                    <img
                       src={it.image}
                       alt={it.title}
                       fill
